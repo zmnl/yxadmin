@@ -12,7 +12,7 @@ public interface TbAdminMapper {
 
     int deleteByPrimaryKey(Long username);
 
-    int insert(TbAdmin record);
+    int insert(TbAdmin record); 
 
     int insertSelective(TbAdmin record);
 
