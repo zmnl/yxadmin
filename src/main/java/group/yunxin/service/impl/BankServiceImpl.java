@@ -1,16 +1,18 @@
 package group.yunxin.service.impl;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import com.alibaba.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
+
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+
 import group.yunxin.mapper.TbBankMapper;
 import group.yunxin.pojo.TbBank;
-import com.pinyougou.pojo.TbBankExample;
-import com.pinyougou.pojo.TbBankExample.Criteria;
+import group.yunxin.pojo.TbBankExample;
+import group.yunxin.pojo.TbBankExample.Criteria;
 import group.yunxin.service.BankService;
-
-import entity.PageResult;
+import group.yunxin.vo.PageResult;
 
 /**
  * 服务实现层
@@ -87,8 +89,8 @@ public class BankServiceImpl implements BankService {
 		Criteria criteria = example.createCriteria();
 		
 		if(bank!=null){			
-						if(bank.getDescribe1()!=null && bank.getDescribe1().length()>0){
-				criteria.andDescribe1Like("%"+bank.getDescribe1()+"%");
+						if(bank.getDescribe()!=null && bank.getDescribe().length()>0){
+				criteria.andDescribeLike("%"+bank.getDescribe()+"%");
 			}
 			if(bank.getName()!=null && bank.getName().length()>0){
 				criteria.andNameLike("%"+bank.getName()+"%");

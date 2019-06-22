@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="group.yunxin.mapper.TbJdQuesMapper" >
+  <resultMap id="BaseResultMap" type="group.yunxin.pojo.TbJdQues" >
+    <id column="ques_id" property="quesId" jdbcType="BIGINT" />
+    <result column="min_length" property="minLength" jdbcType="INTEGER" />
+    <result column="max_length" property="maxLength" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ques_id, min_length, max_length
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="group.yunxin.pojo.TbJdQuesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_jd_ques
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_jd_ques
+    where ques_id = #{quesId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_jd_ques
+    where ques_id = #{quesId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="group.yunxin.pojo.TbJdQuesExample" >
+    delete from tb_jd_ques
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="group.yunxin.pojo.TbJdQues" >
+    insert into tb_jd_ques (ques_id, min_length, max_length
+      )
+    values (#{quesId,jdbcType=BIGINT}, #{minLength,jdbcType=INTEGER}, #{maxLength,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="group.yunxin.pojo.TbJdQues" >
+    insert into tb_jd_ques
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="quesId != null" >
+        ques_id,
+      </if>
+      <if test="minLength != null" >
+        min_length,
+      </if>
+      <if test="maxLength != null" >
+        max_length,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="quesId != null" >
+        #{quesId,jdbcType=BIGINT},
+      </if>
+      <if test="minLength != null" >
+        #{minLength,jdbcType=INTEGER},
+      </if>
+      <if test="maxLength != null" >
+        #{maxLength,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="group.yunxin.pojo.TbJdQuesExample" resultType="java.lang.Integer" >
+    select count(*) from tb_jd_ques
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_jd_ques
+    <set >
+      <if test="record.quesId != null" >
+        ques_id = #{record.quesId,jdbcType=BIGINT},
+      </if>
+      <if test="record.minLength != null" >
+        min_length = #{record.minLength,jdbcType=INTEGER},
+      </if>
+      <if test="record.maxLength != null" >
+        max_length = #{record.maxLength,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_jd_ques
+    set ques_id = #{record.quesId,jdbcType=BIGINT},
+      min_length = #{record.minLength,jdbcType=INTEGER},
+      max_length = #{record.maxLength,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="group.yunxin.pojo.TbJdQues" >
+    update tb_jd_ques
+    <set >
+      <if test="minLength != null" >
+        min_length = #{minLength,jdbcType=INTEGER},
+      </if>
+      <if test="maxLength != null" >
+        max_length = #{maxLength,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ques_id = #{quesId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="group.yunxin.pojo.TbJdQues" >
+    update tb_jd_ques
+    set min_length = #{minLength,jdbcType=INTEGER},
+      max_length = #{maxLength,jdbcType=INTEGER}
+    where ques_id = #{quesId,jdbcType=BIGINT}
+  </update>
+</mapper>

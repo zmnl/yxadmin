@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="group.yunxin.mapper.TbExamMapper" >
+  <resultMap id="BaseResultMap" type="group.yunxin.pojo.TbExam" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="teacher_id" property="teacherId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="need_camera" property="needCamera" jdbcType="INTEGER" />
+    <result column="is_public" property="isPublic" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="diff" property="diff" jdbcType="INTEGER" />
+    <result column="time_start" property="timeStart" jdbcType="TIMESTAMP" />
+    <result column="time_stop" property="timeStop" jdbcType="TIMESTAMP" />
+    <result column="time_public_marks" property="timePublicMarks" jdbcType="TIMESTAMP" />
+    <result column="time_last" property="timeLast" jdbcType="BIGINT" />
+    <result column="max_switch" property="maxSwitch" jdbcType="INTEGER" />
+    <result column="allow_browse_after_time" property="allowBrowseAfterTime" jdbcType="INTEGER" />
+    <result column="marks" property="marks" jdbcType="VARCHAR" />
+    <result column="total_mark" property="totalMark" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, title, teacher_id, create_time, need_camera, is_public, price, diff, time_start, 
+    time_stop, time_public_marks, time_last, max_switch, allow_browse_after_time, marks, 
+    total_mark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="group.yunxin.pojo.TbExamExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_exam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_exam
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_exam
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="group.yunxin.pojo.TbExamExample" >
+    delete from tb_exam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="group.yunxin.pojo.TbExam" >
+    insert into tb_exam (id, title, teacher_id, 
+      create_time, need_camera, is_public, 
+      price, diff, time_start, 
+      time_stop, time_public_marks, time_last, 
+      max_switch, allow_browse_after_time, marks, 
+      total_mark)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{teacherId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{needCamera,jdbcType=INTEGER}, #{isPublic,jdbcType=INTEGER}, 
+      #{price,jdbcType=DOUBLE}, #{diff,jdbcType=INTEGER}, #{timeStart,jdbcType=TIMESTAMP}, 
+      #{timeStop,jdbcType=TIMESTAMP}, #{timePublicMarks,jdbcType=TIMESTAMP}, #{timeLast,jdbcType=BIGINT}, 
+      #{maxSwitch,jdbcType=INTEGER}, #{allowBrowseAfterTime,jdbcType=INTEGER}, #{marks,jdbcType=VARCHAR}, 
+      #{totalMark,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="group.yunxin.pojo.TbExam" >
+    insert into tb_exam
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="teacherId != null" >
+        teacher_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="needCamera != null" >
+        need_camera,
+      </if>
+      <if test="isPublic != null" >
+        is_public,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="diff != null" >
+        diff,
+      </if>
+      <if test="timeStart != null" >
+        time_start,
+      </if>
+      <if test="timeStop != null" >
+        time_stop,
+      </if>
+      <if test="timePublicMarks != null" >
+        time_public_marks,
+      </if>
+      <if test="timeLast != null" >
+        time_last,
+      </if>
+      <if test="maxSwitch != null" >
+        max_switch,
+      </if>
+      <if test="allowBrowseAfterTime != null" >
+        allow_browse_after_time,
+      </if>
+      <if test="marks != null" >
+        marks,
+      </if>
+      <if test="totalMark != null" >
+        total_mark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="needCamera != null" >
+        #{needCamera,jdbcType=INTEGER},
+      </if>
+      <if test="isPublic != null" >
+        #{isPublic,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="diff != null" >
+        #{diff,jdbcType=INTEGER},
+      </if>
+      <if test="timeStart != null" >
+        #{timeStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeStop != null" >
+        #{timeStop,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timePublicMarks != null" >
+        #{timePublicMarks,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeLast != null" >
+        #{timeLast,jdbcType=BIGINT},
+      </if>
+      <if test="maxSwitch != null" >
+        #{maxSwitch,jdbcType=INTEGER},
+      </if>
+      <if test="allowBrowseAfterTime != null" >
+        #{allowBrowseAfterTime,jdbcType=INTEGER},
+      </if>
+      <if test="marks != null" >
+        #{marks,jdbcType=VARCHAR},
+      </if>
+      <if test="totalMark != null" >
+        #{totalMark,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="group.yunxin.pojo.TbExamExample" resultType="java.lang.Integer" >
+    select count(*) from tb_exam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_exam
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherId != null" >
+        teacher_id = #{record.teacherId,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.needCamera != null" >
+        need_camera = #{record.needCamera,jdbcType=INTEGER},
+      </if>
+      <if test="record.isPublic != null" >
+        is_public = #{record.isPublic,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.diff != null" >
+        diff = #{record.diff,jdbcType=INTEGER},
+      </if>
+      <if test="record.timeStart != null" >
+        time_start = #{record.timeStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.timeStop != null" >
+        time_stop = #{record.timeStop,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.timePublicMarks != null" >
+        time_public_marks = #{record.timePublicMarks,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.timeLast != null" >
+        time_last = #{record.timeLast,jdbcType=BIGINT},
+      </if>
+      <if test="record.maxSwitch != null" >
+        max_switch = #{record.maxSwitch,jdbcType=INTEGER},
+      </if>
+      <if test="record.allowBrowseAfterTime != null" >
+        allow_browse_after_time = #{record.allowBrowseAfterTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.marks != null" >
+        marks = #{record.marks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalMark != null" >
+        total_mark = #{record.totalMark,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_exam
+    set id = #{record.id,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      teacher_id = #{record.teacherId,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      need_camera = #{record.needCamera,jdbcType=INTEGER},
+      is_public = #{record.isPublic,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DOUBLE},
+      diff = #{record.diff,jdbcType=INTEGER},
+      time_start = #{record.timeStart,jdbcType=TIMESTAMP},
+      time_stop = #{record.timeStop,jdbcType=TIMESTAMP},
+      time_public_marks = #{record.timePublicMarks,jdbcType=TIMESTAMP},
+      time_last = #{record.timeLast,jdbcType=BIGINT},
+      max_switch = #{record.maxSwitch,jdbcType=INTEGER},
+      allow_browse_after_time = #{record.allowBrowseAfterTime,jdbcType=INTEGER},
+      marks = #{record.marks,jdbcType=VARCHAR},
+      total_mark = #{record.totalMark,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="group.yunxin.pojo.TbExam" >
+    update tb_exam
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null" >
+        teacher_id = #{teacherId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="needCamera != null" >
+        need_camera = #{needCamera,jdbcType=INTEGER},
+      </if>
+      <if test="isPublic != null" >
+        is_public = #{isPublic,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="diff != null" >
+        diff = #{diff,jdbcType=INTEGER},
+      </if>
+      <if test="timeStart != null" >
+        time_start = #{timeStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeStop != null" >
+        time_stop = #{timeStop,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timePublicMarks != null" >
+        time_public_marks = #{timePublicMarks,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeLast != null" >
+        time_last = #{timeLast,jdbcType=BIGINT},
+      </if>
+      <if test="maxSwitch != null" >
+        max_switch = #{maxSwitch,jdbcType=INTEGER},
+      </if>
+      <if test="allowBrowseAfterTime != null" >
+        allow_browse_after_time = #{allowBrowseAfterTime,jdbcType=INTEGER},
+      </if>
+      <if test="marks != null" >
+        marks = #{marks,jdbcType=VARCHAR},
+      </if>
+      <if test="totalMark != null" >
+        total_mark = #{totalMark,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="group.yunxin.pojo.TbExam" >
+    update tb_exam
+    set title = #{title,jdbcType=VARCHAR},
+      teacher_id = #{teacherId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      need_camera = #{needCamera,jdbcType=INTEGER},
+      is_public = #{isPublic,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      diff = #{diff,jdbcType=INTEGER},
+      time_start = #{timeStart,jdbcType=TIMESTAMP},
+      time_stop = #{timeStop,jdbcType=TIMESTAMP},
+      time_public_marks = #{timePublicMarks,jdbcType=TIMESTAMP},
+      time_last = #{timeLast,jdbcType=BIGINT},
+      max_switch = #{maxSwitch,jdbcType=INTEGER},
+      allow_browse_after_time = #{allowBrowseAfterTime,jdbcType=INTEGER},
+      marks = #{marks,jdbcType=VARCHAR},
+      total_mark = #{totalMark,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

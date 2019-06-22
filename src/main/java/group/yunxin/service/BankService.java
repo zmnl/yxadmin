@@ -1,8 +1,8 @@
 package group.yunxin.service;
 import java.util.List;
-import group.yunxin.pojo.TbBank;
 
-import entity.PageResult;
+import group.yunxin.pojo.TbBank;
+import group.yunxin.vo.PageResult;
 /**
  * 服务层接口
  * @author Administrator

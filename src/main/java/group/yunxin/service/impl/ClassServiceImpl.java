@@ -1,16 +1,18 @@
 package group.yunxin.service.impl;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import com.alibaba.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
+
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+
 import group.yunxin.mapper.TbClassMapper;
 import group.yunxin.pojo.TbClass;
-import com.pinyougou.pojo.TbClassExample;
-import com.pinyougou.pojo.TbClassExample.Criteria;
+import group.yunxin.pojo.TbClassExample;
+import group.yunxin.pojo.TbClassExample.Criteria;
 import group.yunxin.service.ClassService;
-
-import entity.PageResult;
+import group.yunxin.vo.PageResult;
 
 /**
  * 服务实现层
@@ -45,8 +47,8 @@ public class ClassServiceImpl implements ClassService {
 	 * 增加
 	 */
 	@Override
-	public void add(TbClass class) {
-		classMapper.insert(class);		
+	public void add(TbClass tbClass) {
+		classMapper.insert(tbClass);		
 	}
 
 	
@@ -54,8 +56,8 @@ public class ClassServiceImpl implements ClassService {
 	 * 修改
 	 */
 	@Override
-	public void update(TbClass class){
-		classMapper.updateByPrimaryKey(class);
+	public void update(TbClass tbClass){
+		classMapper.updateByPrimaryKey(tbClass);
 	}	
 	
 	/**
@@ -80,18 +82,18 @@ public class ClassServiceImpl implements ClassService {
 	
 	
 		@Override
-	public PageResult findPage(TbClass class, int pageNum, int pageSize) {
+	public PageResult findPage(TbClass tbClass, int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbClassExample example=new TbClassExample();
 		Criteria criteria = example.createCriteria();
 		
-		if(class!=null){			
-						if(class.getName()!=null && class.getName().length()>0){
-				criteria.andNameLike("%"+class.getName()+"%");
+		if(tbClass!=null){			
+						if(tbClass.getName()!=null && tbClass.getName().length()>0){
+				criteria.andNameLike("%"+tbClass.getName()+"%");
 			}
-			if(class.getDescription()!=null && class.getDescription().length()>0){
-				criteria.andDescriptionLike("%"+class.getDescription()+"%");
+			if(tbClass.getDescription()!=null && tbClass.getDescription().length()>0){
+				criteria.andDescriptionLike("%"+tbClass.getDescription()+"%");
 			}
 	
 		}

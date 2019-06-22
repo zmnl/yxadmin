@@ -1,8 +1,8 @@
 package group.yunxin.service;
 import java.util.List;
-import group.yunxin.pojo.TbClass;
 
-import entity.PageResult;
+import group.yunxin.pojo.TbClass;
+import group.yunxin.vo.PageResult;
 /**
  * 服务层接口
  * @author Administrator
@@ -27,13 +27,13 @@ public interface ClassService {
 	/**
 	 * 增加
 	*/
-	public void add(TbClass class);
+	public void add(TbClass tbClass);
 	
 	
 	/**
 	 * 修改
 	 */
-	public void update(TbClass class);
+	public void update(TbClass tbClass);
 	
 
 	/**
@@ -56,6 +56,6 @@ public interface ClassService {
 	 * @param pageSize 每页记录数
 	 * @return
 	 */
-	public PageResult findPage(TbClass class, int pageNum,int pageSize);
+	public PageResult findPage(TbClass tbClass, int pageNum,int pageSize);
 	
 }

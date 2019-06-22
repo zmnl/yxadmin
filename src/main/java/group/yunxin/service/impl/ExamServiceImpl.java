@@ -1,16 +1,18 @@
 package group.yunxin.service.impl;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import com.alibaba.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
+
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+
 import group.yunxin.mapper.TbExamMapper;
 import group.yunxin.pojo.TbExam;
-import com.pinyougou.pojo.TbExamExample;
-import com.pinyougou.pojo.TbExamExample.Criteria;
+import group.yunxin.pojo.TbExamExample;
+import group.yunxin.pojo.TbExamExample.Criteria;
 import group.yunxin.service.ExamService;
-
-import entity.PageResult;
+import group.yunxin.vo.PageResult;
 
 /**
  * 服务实现层

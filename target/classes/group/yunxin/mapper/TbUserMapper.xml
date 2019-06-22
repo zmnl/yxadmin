@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="group.yunxin.mapper.TbUserMapper" >
+  <resultMap id="BaseResultMap" type="group.yunxin.pojo.TbUser" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="weichat" property="weichat" jdbcType="VARCHAR" />
+    <result column="detail" property="detail" jdbcType="VARCHAR" />
+    <result column="points" property="points" jdbcType="BIGINT" />
+    <result column="role" property="role" jdbcType="INTEGER" />
+    <result column="back1" property="back1" jdbcType="BIGINT" />
+    <result column="back2" property="back2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, password, name, pic, email, qq, weichat, detail, points, role, back1, back2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="group.yunxin.pojo.TbUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectUsersInClass" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    SELECT * FROM tb_user WHERE tb_user.`id` IN 
+    (SELECT tb_class_user.`user_id` FROM tb_class_user WHERE `class_id` = #{id,jdbcType=BIGINT});
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="group.yunxin.pojo.TbUserExample" >
+    delete from tb_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="group.yunxin.pojo.TbUser" >
+    insert into tb_user (id, password, name, 
+      pic, email, qq, weichat, 
+      detail, points, role, 
+      back1, back2)
+    values (#{id,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{pic,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{weichat,jdbcType=VARCHAR}, 
+      #{detail,jdbcType=VARCHAR}, #{points,jdbcType=BIGINT}, #{role,jdbcType=INTEGER}, 
+      #{back1,jdbcType=BIGINT}, #{back2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="group.yunxin.pojo.TbUser" >
+    insert into tb_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="weichat != null" >
+        weichat,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="points != null" >
+        points,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="back1 != null" >
+        back1,
+      </if>
+      <if test="back2 != null" >
+        back2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weichat != null" >
+        #{weichat,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="points != null" >
+        #{points,jdbcType=BIGINT},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=INTEGER},
+      </if>
+      <if test="back1 != null" >
+        #{back1,jdbcType=BIGINT},
+      </if>
+      <if test="back2 != null" >
+        #{back2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="group.yunxin.pojo.TbUserExample" resultType="java.lang.Integer" >
+    select count(*) from tb_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pic != null" >
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weichat != null" >
+        weichat = #{record.weichat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detail != null" >
+        detail = #{record.detail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.points != null" >
+        points = #{record.points,jdbcType=BIGINT},
+      </if>
+      <if test="record.role != null" >
+        role = #{record.role,jdbcType=INTEGER},
+      </if>
+      <if test="record.back1 != null" >
+        back1 = #{record.back1,jdbcType=BIGINT},
+      </if>
+      <if test="record.back2 != null" >
+        back2 = #{record.back2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_user
+    set id = #{record.id,jdbcType=BIGINT},
+      password = #{record.password,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      pic = #{record.pic,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      weichat = #{record.weichat,jdbcType=VARCHAR},
+      detail = #{record.detail,jdbcType=VARCHAR},
+      points = #{record.points,jdbcType=BIGINT},
+      role = #{record.role,jdbcType=INTEGER},
+      back1 = #{record.back1,jdbcType=BIGINT},
+      back2 = #{record.back2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="group.yunxin.pojo.TbUser" >
+    update tb_user
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weichat != null" >
+        weichat = #{weichat,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="points != null" >
+        points = #{points,jdbcType=BIGINT},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=INTEGER},
+      </if>
+      <if test="back1 != null" >
+        back1 = #{back1,jdbcType=BIGINT},
+      </if>
+      <if test="back2 != null" >
+        back2 = #{back2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="group.yunxin.pojo.TbUser" >
+    update tb_user
+    set password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      weichat = #{weichat,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      points = #{points,jdbcType=BIGINT},
+      role = #{role,jdbcType=INTEGER},
+      back1 = #{back1,jdbcType=BIGINT},
+      back2 = #{back2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

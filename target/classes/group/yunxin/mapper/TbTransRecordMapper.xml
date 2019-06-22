@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="group.yunxin.mapper.TbTransRecordMapper" >
+  <resultMap id="BaseResultMap" type="group.yunxin.pojo.TbTransRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="point_num" property="pointNum" jdbcType="DOUBLE" />
+    <result column="paper_id" property="paperId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, buyer_id, seller_id, time, title, point_num, paper_id, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="group.yunxin.pojo.TbTransRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_trans_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_trans_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_trans_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="group.yunxin.pojo.TbTransRecordExample" >
+    delete from tb_trans_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="group.yunxin.pojo.TbTransRecord" >
+    insert into tb_trans_record (id, buyer_id, seller_id, 
+      time, title, point_num, 
+      paper_id, status)
+    values (#{id,jdbcType=BIGINT}, #{buyerId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, 
+      #{time,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, #{pointNum,jdbcType=DOUBLE}, 
+      #{paperId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="group.yunxin.pojo.TbTransRecord" >
+    insert into tb_trans_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="pointNum != null" >
+        point_num,
+      </if>
+      <if test="paperId != null" >
+        paper_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pointNum != null" >
+        #{pointNum,jdbcType=DOUBLE},
+      </if>
+      <if test="paperId != null" >
+        #{paperId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="group.yunxin.pojo.TbTransRecordExample" resultType="java.lang.Integer" >
+    select count(*) from tb_trans_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_trans_record
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.buyerId != null" >
+        buyer_id = #{record.buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.sellerId != null" >
+        seller_id = #{record.sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pointNum != null" >
+        point_num = #{record.pointNum,jdbcType=DOUBLE},
+      </if>
+      <if test="record.paperId != null" >
+        paper_id = #{record.paperId,jdbcType=BIGINT},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_trans_record
+    set id = #{record.id,jdbcType=BIGINT},
+      buyer_id = #{record.buyerId,jdbcType=BIGINT},
+      seller_id = #{record.sellerId,jdbcType=BIGINT},
+      time = #{record.time,jdbcType=TIMESTAMP},
+      title = #{record.title,jdbcType=VARCHAR},
+      point_num = #{record.pointNum,jdbcType=DOUBLE},
+      paper_id = #{record.paperId,jdbcType=BIGINT},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="group.yunxin.pojo.TbTransRecord" >
+    update tb_trans_record
+    <set >
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pointNum != null" >
+        point_num = #{pointNum,jdbcType=DOUBLE},
+      </if>
+      <if test="paperId != null" >
+        paper_id = #{paperId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="group.yunxin.pojo.TbTransRecord" >
+    update tb_trans_record
+    set buyer_id = #{buyerId,jdbcType=BIGINT},
+      seller_id = #{sellerId,jdbcType=BIGINT},
+      time = #{time,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      point_num = #{pointNum,jdbcType=DOUBLE},
+      paper_id = #{paperId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
