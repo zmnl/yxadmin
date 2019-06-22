@@ -59,11 +59,11 @@
 			                              <th class="" style="padding-right:0px">
 			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
 			                              </th> 
-										                               <th class="sorting"></th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting"></th>			
+										                               <th class="sorting">主键</th>			
+                             <th class="sorting">用户id</th>			
+                             <th class="sorting">登录时间</th>			
+                             <th class="sorting">备份1</th>			
+                             <th class="sorting">备份2</th>			
 								     				
 					                      <th class="text-center">操作</th>
 			                          </tr>
@@ -103,30 +103,30 @@
 			 <table class="table table-bordered table-striped"  width="800px">			
 		      	  		      	<tr>
                              
-<td></td>
+<td>用户id</td>
 
-                             <td><input  class="form-control" ng-model="entity.userId" placeholder="" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td></td>
-
-                             <td><input  class="form-control" ng-model="entity.loginTime" placeholder="" ></td>
+                             <td><input  class="form-control" ng-model="entity.userId" placeholder="用户id" ></td>
 
                         </tr>		
 		      	<tr>
                              
-<td></td>
+<td>登录时间</td>
 
-                             <td><input  class="form-control" ng-model="entity.back1" placeholder="" ></td>
+                             <td><input  class="form-control" ng-model="entity.loginTime" placeholder="登录时间" ></td>
 
                         </tr>		
 		      	<tr>
                              
-<td></td>
+<td>备份1</td>
 
-                             <td><input  class="form-control" ng-model="entity.back2" placeholder="" ></td>
+                             <td><input  class="form-control" ng-model="entity.back1" placeholder="备份1" ></td>
+
+                        </tr>		
+		      	<tr>
+                             
+<td>备份2</td>
+
+                             <td><input  class="form-control" ng-model="entity.back2" placeholder="备份2" ></td>
 
                         </tr>		
 		  		      	

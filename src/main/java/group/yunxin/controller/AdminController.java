@@ -55,7 +55,7 @@ public class AdminController
 	 * @param admin
 	 * @return
 	 */
-	@RequestMapping("/add")
+	@RequestMapping("/add") 
 	public Result add(@RequestBody TbAdmin admin)
 	{
 		try
