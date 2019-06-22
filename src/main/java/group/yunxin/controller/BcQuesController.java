@@ -1,114 +1,138 @@
 package group.yunxin.controller;
+
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.alibaba.dubbo.config.annotation.Reference;
-import group.yunxin.pojo.TbBcQues;
-import group.yunxin.[path_3].service.BcQuesService;
 
-import entity.PageResult;
-import entity.Result;
+import group.yunxin.pojo.TbBcQues;
+import group.yunxin.service.BcQuesService;
+import group.yunxin.vo.PageResult;
+import group.yunxin.vo.Result;
+
 /**
  * controller
+ * 
  * @author Administrator
  *
  */
 @RestController
 @RequestMapping("/bcQues")
-public class BcQuesController {
+public class BcQuesController
+{
 
-	@Reference
+	@Autowired
 	private BcQuesService bcQuesService;
-	
+
 	/**
 	 * 返回全部列表
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/findAll")
-	public List<TbBcQues> findAll(){			
+	public List<TbBcQues> findAll()
+	{
 		return bcQuesService.findAll();
 	}
-	
-	
+
 	/**
 	 * 返回全部列表
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/findPage")
-	public PageResult  findPage(int page,int rows){			
+	public PageResult findPage(int page, int rows)
+	{
 		return bcQuesService.findPage(page, rows);
 	}
-	
+
 	/**
 	 * 增加
+	 * 
 	 * @param bcQues
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody TbBcQues bcQues){
-		try {
+	public Result add(@RequestBody TbBcQues bcQues)
+	{
+		try
+		{
 			bcQuesService.add(bcQues);
 			return new Result(true, "增加成功");
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 			return new Result(false, "增加失败");
 		}
 	}
-	
+
 	/**
 	 * 修改
+	 * 
 	 * @param bcQues
 	 * @return
 	 */
 	@RequestMapping("/update")
-	public Result update(@RequestBody TbBcQues bcQues){
-		try {
+	public Result update(@RequestBody TbBcQues bcQues)
+	{
+		try
+		{
 			bcQuesService.update(bcQues);
 			return new Result(true, "修改成功");
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 			return new Result(false, "修改失败");
 		}
-	}	
-	
+	}
+
 	/**
 	 * 获取实体
+	 * 
 	 * @param id
 	 * @return
 	 */
 	@RequestMapping("/findOne")
-	public TbBcQues findOne(Long id){
-		return bcQuesService.findOne(id);		
+	public TbBcQues findOne(Long id)
+	{
+		return bcQuesService.findOne(id);
 	}
-	
+
 	/**
 	 * 批量删除
+	 * 
 	 * @param ids
 	 * @return
 	 */
 	@RequestMapping("/delete")
-	public Result delete(Long [] ids){
-		try {
+	public Result delete(Long[] ids)
+	{
+		try
+		{
 			bcQuesService.delete(ids);
-			return new Result(true, "删除成功"); 
-		} catch (Exception e) {
+			return new Result(true, "删除成功");
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 			return new Result(false, "删除失败");
 		}
 	}
-	
-		/**
+
+	/**
 	 * 查询+分页
+	 * 
 	 * @param brand
 	 * @param page
 	 * @param rows
 	 * @return
 	 */
 	@RequestMapping("/search")
-	public PageResult search(@RequestBody TbBcQues bcQues, int page, int rows  ){
-		return bcQuesService.findPage(bcQues, page, rows);		
+	public PageResult search(@RequestBody TbBcQues bcQues, int page, int rows)
+	{
+		return bcQuesService.findPage(bcQues, page, rows);
 	}
-	
+
 }

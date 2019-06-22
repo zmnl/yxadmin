@@ -1,15 +1,16 @@
 package group.yunxin.controller;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.alibaba.dubbo.config.annotation.Reference;
-import group.yunxin.pojo.TbClass;
-import group.yunxin.[path_3].service.ClassService;
 
-import entity.PageResult;
-import entity.Result;
+import group.yunxin.pojo.TbClass;
+import group.yunxin.service.ClassService;
+import group.yunxin.vo.PageResult;
+import group.yunxin.vo.Result;
 /**
  * controller
  * @author Administrator
@@ -19,7 +20,7 @@ import entity.Result;
 @RequestMapping("/class")
 public class ClassController {
 
-	@Reference
+	@Autowired
 	private ClassService classService;
 	
 	/**
@@ -47,9 +48,9 @@ public class ClassController {
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody TbClass class){
+	public Result add(@RequestBody TbClass tbClass){
 		try {
-			classService.add(class);
+			classService.add(tbClass);
 			return new Result(true, "增加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +64,9 @@ public class ClassController {
 	 * @return
 	 */
 	@RequestMapping("/update")
-	public Result update(@RequestBody TbClass class){
+	public Result update(@RequestBody TbClass tbClass){
 		try {
-			classService.update(class);
+			classService.update(tbClass);
 			return new Result(true, "修改成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -107,8 +108,8 @@ public class ClassController {
 	 * @return
 	 */
 	@RequestMapping("/search")
-	public PageResult search(@RequestBody TbClass class, int page, int rows  ){
-		return classService.findPage(class, page, rows);		
+	public PageResult search(@RequestBody TbClass tbClass, int page, int rows  ){
+		return classService.findPage(tbClass, page, rows);		
 	}
 	
 }

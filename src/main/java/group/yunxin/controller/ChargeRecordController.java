@@ -1,15 +1,16 @@
 package group.yunxin.controller;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.alibaba.dubbo.config.annotation.Reference;
-import group.yunxin.pojo.TbChargeRecord;
-import group.yunxin.[path_3].service.ChargeRecordService;
 
-import entity.PageResult;
-import entity.Result;
+import group.yunxin.pojo.TbChargeRecord;
+import group.yunxin.service.ChargeRecordService;
+import group.yunxin.vo.PageResult;
+import group.yunxin.vo.Result;
 /**
  * controller
  * @author Administrator
@@ -19,7 +20,7 @@ import entity.Result;
 @RequestMapping("/chargeRecord")
 public class ChargeRecordController {
 
-	@Reference
+	@Autowired
 	private ChargeRecordService chargeRecordService;
 	
 	/**
