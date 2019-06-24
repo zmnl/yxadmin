@@ -1,4 +1,21 @@
- //控制层 
+app.filter('switchTime', function() {
+	return function(text) {
+		var d = new Date(text);
+		var datetime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ';
+		if (d.getHours() < 10)
+			datetime += "0";
+		datetime += d.getHours()+":";
+		if (d.getMinutes() < 10)
+			datetime += "0";
+		datetime += d.getMinutes()+":";
+		if (d.getSeconds() < 10)
+			datetime += "0";
+		datetime += d.getSeconds();
+		return datetime;
+	}
+});
+ 
+//控制层 
 app.controller('transRecordController' ,function($scope,$controller   ,transRecordService){	
 	
 	$controller('baseController',{$scope:$scope});//继承
