@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @MapperScan(value = "group.yunxin.mapper") 
 @SpringBootApplication(scanBasePackages = "group.yunxin.*")
 public class Application extends SpringBootServletInitializer
-{
+{ 
 //	@Override
 //	protected SpringApplicationBuilder configure(SpringApplicationBuilder application)
 //	{
