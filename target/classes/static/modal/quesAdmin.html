@@ -21,9 +21,9 @@
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
 	rel="stylesheet">
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE -->
 <script src="dist/js/adminlte.js"></script>
 
@@ -68,18 +68,6 @@ to get the desired effect
 
 			</ul>
 
-			<!-- SEARCH FORM -->
-			<form class="form-inline ml-3">
-				<div class="input-group input-group-sm">
-					<input class="form-control form-control-navbar" type="search"
-						placeholder="Search" aria-label="Search">
-					<div class="input-group-append">
-						<button class="btn btn-navbar" type="submit">
-							<i class="fa fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
 
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
@@ -250,7 +238,7 @@ to get the desired effect
 								</a></li>
 								<li class="nav-item"><a href="oneanswAdmin.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>单选题管理</p>
+										<p>答题记录管理</p>
 								</a></li>
 								<li class="nav-item"><a href="paperAdminhtml"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
@@ -371,8 +359,9 @@ to get the desired effect
   <div class="modal-dialog" >
 	<div class="modal-content">
 		<div class="modal-header">
+		<h3 id="myModalLabel">编辑</h3>
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">编辑</h3>
+			
 		</div>
 		<div class="modal-body">	
 			 <table class="table table-bordered table-striped"  width="800px">			

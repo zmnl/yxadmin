@@ -166,72 +166,72 @@ public class TbBankExample {
         }
 
         public Criteria andDescribeIsNull() {
-            addCriterion("describe is null");
+            addCriterion("describe1 is null");
             return (Criteria) this;
         }
 
         public Criteria andDescribeIsNotNull() {
-            addCriterion("describe is not null");
+            addCriterion("describe1 is not null");
             return (Criteria) this;
         }
 
         public Criteria andDescribeEqualTo(String value) {
-            addCriterion("describe =", value, "describe");
+            addCriterion("describe1 =", value, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeNotEqualTo(String value) {
-            addCriterion("describe <>", value, "describe");
+            addCriterion("describe1 <>", value, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeGreaterThan(String value) {
-            addCriterion("describe >", value, "describe");
+            addCriterion("describe1 >", value, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeGreaterThanOrEqualTo(String value) {
-            addCriterion("describe >=", value, "describe");
+            addCriterion("describe1 >=", value, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeLessThan(String value) {
-            addCriterion("describe <", value, "describe");
+            addCriterion("describe1 <", value, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeLessThanOrEqualTo(String value) {
-            addCriterion("describe <=", value, "describe");
+            addCriterion("describe1 <=", value, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeLike(String value) {
-            addCriterion("describe like", value, "describe");
+            addCriterion("describe1 like", value, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeNotLike(String value) {
-            addCriterion("describe not like", value, "describe");
+            addCriterion("describe1 not like", value, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeIn(List<String> values) {
-            addCriterion("describe in", values, "describe");
+            addCriterion("describe1 in", values, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeNotIn(List<String> values) {
-            addCriterion("describe not in", values, "describe");
+            addCriterion("describe1 not in", values, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeBetween(String value1, String value2) {
-            addCriterion("describe between", value1, value2, "describe");
+            addCriterion("describe1 between", value1, value2, "describe1");
             return (Criteria) this;
         }
 
         public Criteria andDescribeNotBetween(String value1, String value2) {
-            addCriterion("describe not between", value1, value2, "describe");
+            addCriterion("describe1 not between", value1, value2, "describe1");
             return (Criteria) this;
         }
 

@@ -20,6 +20,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
 	rel="stylesheet">
+<link href="assets/theme/css/tempusdominus-bootstrap-4.css"
+	rel="stylesheet">
 <!-- jQuery -->
 <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap -->
@@ -45,6 +47,15 @@
 <script type="text/javascript" src="../js/controller/baseController.js">  </script>
 <script type="text/javascript"
 	src="../js/controller/chargeRecordController.js">  </script>
+<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+<script type="text/javascript"
+	src="js/moment-timezone-with-data-2012-2022.min.js"></script>
+<script src="assets/theme/js/tempusdominus-bootstrap-4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#datetimepicker1').datetimepicker();
+	});
+</script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -70,18 +81,7 @@ to get the desired effect
 
 			</ul>
 
-			<!-- SEARCH FORM -->
-			<form class="form-inline ml-3">
-				<div class="input-group input-group-sm">
-					<input class="form-control form-control-navbar" type="search"
-						placeholder="Search" aria-label="Search">
-					<div class="input-group-append">
-						<button class="btn btn-navbar" type="submit">
-							<i class="fa fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
+
 
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
@@ -226,10 +226,7 @@ to get the desired effect
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>题库管理</p>
 								</a></li>
-								<li class="nav-item"><a href="bcquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>编程题管理</p>
-								</a></li>
+
 								<li class="nav-item"><a href="cateAdmin.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>分类管理</p>
@@ -246,30 +243,9 @@ to get the desired effect
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>考试管理</p>
 								</a></li>
-								<li class="nav-item"><a href="jdquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>简答题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="oneanswAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>单选题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="paperAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>试卷管理</p>
-								</a></li>
-								<li class="nav-item"><a href="pdquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>判断题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="quesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>试题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="tkquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>填空题管理</p>
-								</a></li>
+
+
+
 								<li class="nav-item"><a href="transRecordAdmin.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>交易记录管理</p>
@@ -278,11 +254,7 @@ to get the desired effect
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>用户管理</p>
 								</a></li>
-							
-								<li class="nav-item"><a href="xzquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>选择题管理</p>
-								</a></li>
+
 							</ul></li>
 
 
@@ -296,141 +268,188 @@ to get the desired effect
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper"
 			style="min-height: 473.713px; padding-left: 30px;">
-			<body class="hold-transition skin-red sidebar-mini" ng-app="yunxin" ng-controller="chargeRecordController" >
-  <!-- .box-body -->
-                    <div class="box-header with-border">
-                        <h3 class="box-title">管理</h3>
-                    </div>
+			<body class="hold-transition skin-red sidebar-mini" ng-app="yunxin"
+				ng-controller="chargeRecordController">
+				<!-- .box-body -->
+				<div class="box-header with-border">
+					<h3 class="box-title">管理</h3>
+				</div>
 
-                    <div class="box-body">
+				<div class="box-body">
 
-                        <!-- 数据表格 -->
-                        <div class="table-box">
+					<!-- 数据表格 -->
+					<div class="table-box">
 
-                            <!--工具栏-->
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="entity={}"><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" title="删除" ng-click="dele()"><i class="fa fa-trash-o"></i> 删除</button>           
-                                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">							       
-                                </div>
-                            </div>
-                            <!--工具栏/-->
+						<!--工具栏-->
+						<div class="pull-left">
+							<div class="form-group form-inline">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" title="新建"
+										data-toggle="modal" data-target="#editModal"
+										ng-click="entity={}">
+										<i class="fa fa-file-o"></i> 新建
+									</button>
+									<button type="button" class="btn btn-default" title="删除"
+										ng-click="dele()">
+										<i class="fa fa-trash-o"></i> 删除
+									</button>
+									<button type="button" class="btn btn-default" title="刷新"
+										onclick="window.location.reload();">
+										<i class="fa fa-refresh"></i> 刷新
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="box-tools pull-right">
+							<div class="has-feedback"></div>
+						</div>
+						<!--工具栏/-->
 
-			                  <!--数据列表-->
-			                  <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
-			                      <thead>
-			                          <tr>
-			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
-			                              </th> 
-										                               <th class="sorting">主键</th>			
-                             <th class="sorting">抬头</th>			
-                             <th class="sorting">用户id</th>			
-                             <th class="sorting">交易时间</th>			
-                             <th class="sorting">充值金额</th>			
-                             <th class="sorting">充值</th>			
-                             <th class="sorting">状态</th>			
-								     				
-					                      <th class="text-center">操作</th>
-			                          </tr>
-			                      </thead>
-			                      <tbody>
-			                          <tr ng-repeat="entity in list">
-			                              <td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>			                              
-				                                                       <td>{{entity.id}}</td>			
-                             <td>{{entity.title}}</td>			
-                             <td>{{entity.userId}}</td>			
-                             <td>{{entity.time|switchTime}}</td>			
-                             <td>{{entity.moneyNum}}</td>			
-                             <td>{{entity.pointNum}}</td>			
-                             <td>{{entity.status}}</td>			
-		                                 
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)" >修改</button>                                           
-		                                  </td>
-			                          </tr>									 
-			                      </tbody>
-			                  </table>
-			                  <!--数据列表/-->                        
-                        </div>
-                        <!-- 数据表格 /-->
-                        <!-- 分页 -->
-						<tm-pagination conf="paginationConf"></tm-pagination>
-                     </div>
-                    <!-- /.box-body -->
-         
-<!-- 编辑窗口 -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
-	<div class="modal-content">
-		<div class="modal-header">
-		<h3 id="myModalLabel">编辑</h3>
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			
-		</div>
-		<div class="modal-body">	
-			 <table class="table table-bordered table-striped"  width="800px">			
-		      	  		      	<tr>
-                             
-<td>抬头</td>
+						<!--数据列表-->
+						<table id="dataList"
+							class="table table-bordered table-striped table-hover dataTable">
+							<thead>
+								<tr>
+									<th class="" style="padding-right:0px"><input id="selall"
+										type="checkbox" class="icheckbox_square-blue"></th>
+									<th class="sorting">记录id</th>
+									<th class="sorting">名称</th>
+									<th class="sorting">用户id</th>
+									<th class="sorting">交易时间</th>
+									<th class="sorting">充值金额(单位:元)</th>
+									<th class="sorting">充值积分数</th>
+									<th class="sorting">状态</th>
 
-                             <td><input  class="form-control" ng-model="entity.title" placeholder="抬头" ></td>
+									<th class="text-center">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="entity in list">
+									<td><input type="checkbox"
+										ng-click="updateSelection($event,entity.id)"></td>
+									<td>{{entity.id}}</td>
+									<td>{{entity.title}}</td>
+									<td>{{entity.userId}}</td>
+									<td>{{entity.time|switchTime}}</td>
+									<td>{{entity.moneyNum}}</td>
+									<td>{{entity.pointNum}}</td>
+									<td>{{entity.status}}</td>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>用户id</td>
+									<td class="text-center">
+										<button type="button" class="btn bg-olive btn-xs"
+											style="background-color:#3d9970 !important;color:white"
+											data-toggle="modal" data-target="#editModal"
+											ng-click="findOne(entity.id)">修改</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!--数据列表/-->
+					</div>
+					<!-- 数据表格 /-->
+					<!-- 分页 -->
+					<tm-pagination conf="paginationConf"></tm-pagination>
+				</div>
+				<!-- /.box-body -->
 
-                             <td><input  class="form-control" ng-model="entity.userId" placeholder="用户id" ></td>
+				<!-- 编辑窗口 -->
+				<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 id="myModalLabel">编辑</h3>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>交易时间</td>
+							</div>
+							<div class="modal-body">
+								<table class="table table-bordered table-striped" width="800px">
+									<tr>
 
-                             <td><input  class="form-control" ng-model="entity.time" placeholder="交易时间" ></td>
+										<td>名称</td>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>充值金额</td>
+										<td><input class="form-control" ng-model="entity.title"
+											placeholder="抬头"></td>
 
-                             <td><input  class="form-control" ng-model="entity.moneyNum" placeholder="充值金额" ></td>
+									</tr>
+									<tr>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>充值</td>
+										<td>用户id</td>
 
-                             <td><input  class="form-control" ng-model="entity.pointNum" placeholder="充值" ></td>
+										<td><input class="form-control" ng-model="entity.userId"
+											placeholder="用户id"></td>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>状态</td>
+									</tr>
+									<tr>
 
-                             <td><input  class="form-control" ng-model="entity.status" placeholder="状态" ></td>
+										<td>交易时间</td>
 
-                        </tr>		
-		  		      	
-			 </table>				
-		</div>
-		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
-			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-		</div>
-	  </div>
-	</div>
-</div>
-   
-</body>
+										<td>
+											<div class="form-group">
+												<div class="input-group date" id="datetimepicker1"
+													data-target-input="nearest">
+													<input type="text"
+														class="form-control datetimepicker-input"
+														data-target="#datetimepicker1"
+														value="{{entity.time | database2plugin}}" id="time1"
+														style="width: 282px";/>
+													<div class="
+														input-group-append"
+														data-target="#datetimepicker1"
+														data-toggle="datetimepicker">
+													<div class="input-group-text" style="height: 33.5px";>
+														<i class="fa fa-calendar"></i>
+													</div>
+												</div>
+											</div>
+											</div> <!-- <input class="form-control" ng-model="entity.time"
+											placeholder="交易时间">
+																		<input class="form-control" ng-model="entity.createTime"
+								placeholder="创建时间" value="{{entity.creatTime | database2plugin}}"></td>
+											
+											 -->
+										</td>
+
+									</tr>
+									<tr>
+
+										<td>充值金额(单位：元)</td>
+
+										<td><input class="form-control"
+											ng-model="entity.moneyNum" placeholder="充值金额"></td>
+
+									</tr>
+									<tr>
+
+										<td>充值积分数</td>
+
+										<td><input class="form-control"
+											ng-model="entity.pointNum" placeholder="充值"></td>
+
+									</tr>
+									<tr>
+
+										<td>状态</td>
+
+										<td><input class="form-control" ng-model="entity.status"
+											placeholder="状态"></td>
+
+									</tr>
+
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-success" data-dismiss="modal"
+									aria-hidden="true" ng-click="save()">保存</button>
+								<button class="btn btn-default" data-dismiss="modal"
+									aria-hidden="true">关闭</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</body>
 		</div>
 		<!-- /.content-wrapper -->
 
@@ -446,8 +465,9 @@ to get the desired effect
 			<div class="float-right d-none d-sm-block-down">Anything you
 				want</div>
 			<!-- Default to the left -->
-			<strong>Copyright &copy; 2018 <a href="https://adminlte.io">AdminLTE.io</a>.
-			</strong> All rights reserved.
+			<div class="login-extra text-center" style="text-align:center">
+				<a href="http://www.miit.gov.cn/">豫ICP备18041064号</a>
+			</div>
 		</footer>
 	</div>
 	<!-- ./wrapper -->
@@ -460,10 +480,10 @@ to get the desired effect
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-				<h3 id="myModalLabel">编辑</h3>
+					<h3 id="myModalLabel">编辑</h3>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">×</button>
-					
+
 				</div>
 				<div class="modal-body">
 					<table class="table table-bordered table-striped" width="800px">

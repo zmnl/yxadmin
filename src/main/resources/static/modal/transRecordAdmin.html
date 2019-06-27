@@ -16,14 +16,18 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="dist/css/adminlte.min.css">
 <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+<link
+	href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
 <!-- Google Font: Source Sans Pro -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
 	rel="stylesheet">
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+
 <!-- AdminLTE -->
 <script src="dist/js/adminlte.js"></script>
 
@@ -43,6 +47,15 @@
     <script type="text/javascript" src="../js/service/transRecordService.js">  </script>
     <script type="text/javascript" src="../js/controller/baseController.js">  </script>
     <script type="text/javascript" src="../js/controller/transRecordController.js">  </script>
+    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+    <script type="text/javascript"
+	src="js/moment-timezone-with-data-2012-2022.min.js"></script>
+	<script src="assets/theme/js/tempusdominus-bootstrap-4.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			$('#datetimepicker1').datetimepicker();
+		});
+	</script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -68,19 +81,7 @@ to get the desired effect
 
 			</ul>
 
-			<!-- SEARCH FORM -->
-			<form class="form-inline ml-3">
-				<div class="input-group input-group-sm">
-					<input class="form-control form-control-navbar" type="search"
-						placeholder="Search" aria-label="Search">
-					<div class="input-group-append">
-						<button class="btn btn-navbar" type="submit">
-							<i class="fa fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-
+	
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
 				<!-- Messages Dropdown Menu -->
@@ -224,10 +225,7 @@ to get the desired effect
 										<i class="fa fa-circle-o nav-icon"></i>
 										<p>题库管理</p>
 								</a></li>
-								<li class="nav-item"><a href="bcquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>编程题管理</p>
-								</a></li>
+							
 								<li class="nav-item"><a href="pages/charts/inline.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>分类管理</p>
@@ -244,30 +242,7 @@ to get the desired effect
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>考试管理</p>
 								</a></li>
-								<li class="nav-item"><a href="jdquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>简答题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="oneanswAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>单选题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="paperAdminhtml"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>试卷管理</p>
-								</a></li>
-								<li class="nav-item"><a href="pdquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>判断题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="quesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>试题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="tkquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>填空题管理</p>
-								</a></li>
+						
 								<li class="nav-link active"><a href="#"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>交易记录管理</p>
@@ -277,10 +252,7 @@ to get the desired effect
 										<p>用户管理</p>
 								</a></li>
 								
-								<li class="nav-item"><a href="xzquesAdmin.html.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>选择题管理</p>
-								</a></li>
+							
 							</ul></li>
 
 
@@ -328,14 +300,14 @@ to get the desired effect
 			                              <th class="" style="padding-right:0px">
 			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
 			                              </th> 
-										                               <th class="sorting">主键</th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting"></th>			
+										                               <th class="sorting">交易记录id</th>			
+                             <th class="sorting">购买者id</th>			
+                             <th class="sorting">售卖者id</th>			
+                             <th class="sorting">交易时间</th>			
+                             <th class="sorting">交易记录名称</th>			
+                             <th class="sorting">积分数</th>			
+                             <th class="sorting">试卷id</th>			
+                             <th class="sorting">状态</th>			
 								     				
 					                      <th class="text-center">操作</th>
 			                          </tr>
@@ -353,7 +325,7 @@ to get the desired effect
                              <td>{{entity.status}}</td>			
 		                                 
 		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)" >修改</button>                                           
+		                                 	  <button type="button" class="btn bg-olive btn-xs"style="background-color:#3d9970 !important;color:white" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)" >修改</button>                                           
 		                                  </td>
 			                          </tr>									 
 			                      </tbody>
@@ -371,62 +343,80 @@ to get the desired effect
   <div class="modal-dialog" >
 	<div class="modal-content">
 		<div class="modal-header">
+		<h3 id="myModalLabel">编辑</h3>
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">编辑</h3>
+			
 		</div>
 		<div class="modal-body">	
-			 <table class="table table-bordered table-striped"  width="800px">			
+			  <table class="table table-bordered table-striped"  width="800px">			
 		      	  		      	<tr>
                              
-<td></td>
+<td>购买者id</td>
 
-                             <td><input  class="form-control" ng-model="entity.buyerId" placeholder="" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td></td>
-
-                             <td><input  class="form-control" ng-model="entity.sellerId" placeholder="" ></td>
+                             <td><input  class="form-control" ng-model="entity.buyerId" placeholder="购买者id" ></td>
 
                         </tr>		
 		      	<tr>
                              
-<td></td>
+<td>售卖者id</td>
 
-                             <td><input  class="form-control" ng-model="entity.time" placeholder="" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td></td>
-
-                             <td><input  class="form-control" ng-model="entity.title" placeholder="" ></td>
+                             <td><input  class="form-control" ng-model="entity.sellerId" placeholder="售卖者id" ></td>
 
                         </tr>		
 		      	<tr>
                              
-<td></td>
+<td>交易时间</td>
 
-                             <td><input  class="form-control" ng-model="entity.pointNum" placeholder="" ></td>
+                             <td>		<div class="form-group">
+												<div class="input-group date" id="datetimepicker1"
+													data-target-input="nearest">
+													<input type="text"
+														class="form-control datetimepicker-input"
+														data-target="#datetimepicker1"
+														value="{{entity.createTime | database2plugin}}" id="time1" style="
+    width: 323px"; />
+													<div class="input-group-append"
+														data-target="#datetimepicker1"
+														data-toggle="datetimepicker">
+														<div class="input-group-text" style="
+    height: 33.5px";>
+															<i class="fa fa-calendar"></i>
+														</div>
+													</div>
+												</div>
+											</div></td>
 
                         </tr>		
 		      	<tr>
                              
-<td></td>
+<td>交易记录名称</td>
 
-                             <td><input  class="form-control" ng-model="entity.paperId" placeholder="" ></td>
+                             <td><input  class="form-control" ng-model="entity.title" placeholder="交易记录名称" ></td>
 
                         </tr>		
 		      	<tr>
                              
-<td></td>
+<td>积分数</td>
 
-                             <td><input  class="form-control" ng-model="entity.status" placeholder="" ></td>
+                             <td><input  class="form-control" ng-model="entity.pointNum" placeholder="积分数" ></td>
+
+                        </tr>		
+		      	<tr>
+                             
+<td>试卷id</td>
+
+                             <td><input  class="form-control" ng-model="entity.paperId" placeholder="试卷id" ></td>
+
+                        </tr>		
+		      	<tr>
+                             
+<td>状态</td>
+
+                             <td><input  class="form-control" ng-model="entity.status" placeholder="0：失败 ；1：成功" ></td>
 
                         </tr>		
 		  		      	
-			 </table>				
+			 </table>			
 		</div>
 		<div class="modal-footer">						
 			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>

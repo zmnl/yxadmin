@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class TbChargeRecord implements Serializable
 {
-	
 
 	/**
 	 * 
@@ -26,7 +25,7 @@ public class TbChargeRecord implements Serializable
 
 	private Double pointNum;
 
-	private Integer status;
+	private Integer status;// 0 1
 
 	public Long getId()
 	{

@@ -3,7 +3,7 @@
 <mapper namespace="group.yunxin.mapper.TbBankMapper" >
   <resultMap id="BaseResultMap" type="group.yunxin.pojo.TbBank" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="describe" property="describe" jdbcType="VARCHAR" />
+    <result column="describe1" property="describe" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="teacher_id" property="teacherId" jdbcType="BIGINT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
