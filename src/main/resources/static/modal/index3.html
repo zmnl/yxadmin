@@ -19,6 +19,32 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
 	rel="stylesheet">
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="dist/js/adminlte.js"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="dist/js/demo.js"></script>
+<script src="dist/js/pages/dashboard3.js"></script>
+
+<script type="text/javascript" src="../plugins/angularjs/angular.min.js">  </script>
+<!-- 分页组件开始 -->
+<script src="../plugins/angularjs/pagination.js"></script>
+<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+<!-- 分页组件结束 -->
+
+
+<script type="text/javascript" src="../js/base_pagination.js">  </script>
+<script type="text/javascript"
+	src="../js/service/chargeRecordService.js">  </script>
+<script type="text/javascript" src="../js/controller/baseController.js">  </script>
+<script type="text/javascript"
+	src="../js/controller/chargeRecordController.js">  </script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -30,7 +56,8 @@ to get the desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" ng-app="yunxin"
+	ng-controller="chargeRecordController" ng-init="draw()">
 	<div class="wrapper">
 		<!-- Navbar -->
 		<nav
@@ -521,12 +548,12 @@ to get the desired effect
 								<div class="card-body">
 									<div class="d-flex">
 										<p class="d-flex flex-column">
-											<span class="text-bold text-lg">$18,230.00</span> <span>Sales
-												Over Time</span>
+											<span class="text-bold text-lg" id="total2">$18,230.00</span>
+											<span>Sales Over Time</span>
 										</p>
 										<p class="ml-auto d-flex flex-column text-right">
-											<span class="text-success"> <i class="fa fa-arrow-up"></i>
-												33.1%
+											<span class="text-success"> <i class="fa fa-arrow-up" id="arrow2"></i>
+												<aaa id="rate2">33.1%</aaa>
 											</span> <span class="text-muted">Since last month</span>
 										</p>
 									</div>
@@ -644,25 +671,15 @@ to get the desired effect
 			<div class="float-right d-none d-sm-block-down">Anything you
 				want</div>
 			<!-- Default to the left -->
-				<div class="login-extra text-center" style="text-align:center">
-		<a href="http://www.miit.gov.cn/">豫ICP备18041064号</a>
-	</div>
+			<div class="login-extra text-center" style="text-align:center">
+				<a href="http://www.miit.gov.cn/">豫ICP备18041064号</a>
+			</div>
 		</footer>
 	</div>
 	<!-- ./wrapper -->
 
 	<!-- REQUIRED SCRIPTS -->
 
-	<!-- jQuery -->
-	<script src="plugins/jquery/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- AdminLTE -->
-	<script src="dist/js/adminlte.js"></script>
 
-	<!-- OPTIONAL SCRIPTS -->
-	<script src="plugins/chart.js/Chart.min.js"></script>
-	<script src="dist/js/demo.js"></script>
-	<script src="dist/js/pages/dashboard3.js"></script>
 </body>
 </html>

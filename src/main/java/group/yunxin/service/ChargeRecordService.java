@@ -62,4 +62,10 @@ public interface ChargeRecordService
 	 */
 	public PageResult findPage(TbChargeRecord chargeRecord, int pageNum, int pageSize);
 
+	/**
+	 * 得到14天充值记录
+	 * @return
+	 */
+	public List<Double> getRecord();
+
 }

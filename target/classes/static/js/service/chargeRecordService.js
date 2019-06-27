@@ -29,4 +29,8 @@ app.service('chargeRecordService',function($http){
 	this.search=function(page,rows,searchEntity){
 		return $http.post('/chargeRecord/search?page='+page+"&rows="+rows, searchEntity);
 	}    	
+	//搜索
+	this.draw2=function(){
+		return $http.get("/chargeRecord/getRecord");
+	}    	
 });

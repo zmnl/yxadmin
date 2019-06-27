@@ -1,5 +1,8 @@
 package group.yunxin.service.impl;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +112,37 @@ public class ChargeRecordServiceImpl implements ChargeRecordService
 
 		Page<TbChargeRecord> page = (Page<TbChargeRecord>) chargeRecordMapper.selectByExample(example);
 		return new PageResult(page.getTotal(), page.getResult());
+	}
+
+	@Override
+	public List<Double> getRecord()
+	{
+		List<Double> rs = new LinkedList<Double>();
+		Date date1 = new Date();
+		date1.setHours(0);
+		date1.setMinutes(0);
+		date1.setSeconds(0); 
+		Date date2 = new Date();
+		for (int i = 0; i < 14; i++)
+		{
+			TbChargeRecordExample example = new TbChargeRecordExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andTimeBetween(date1, date2);
+			List<TbChargeRecord> list = chargeRecordMapper.selectByExample(example);
+			double today = 0;
+			for (TbChargeRecord t : list)
+			{
+				today += t.getMoneyNum();
+			}
+			rs.add(today);
+			// 往前一天
+			date2 = date1;
+			Calendar c = Calendar.getInstance();
+			c.setTime(date1);
+			c.add(Calendar.DAY_OF_MONTH, -1);
+			date1 = c.getTime();
+		}
+		return rs;
 	}
 
 }

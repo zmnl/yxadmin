@@ -2,6 +2,8 @@ package group.yunxin.mapper;
 
 import group.yunxin.pojo.TbChargeRecord;
 import group.yunxin.pojo.TbChargeRecordExample;
+
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
