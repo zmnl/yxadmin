@@ -1,4 +1,5 @@
 package group.yunxin.controller;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,105 +12,141 @@ import group.yunxin.pojo.TbLoginRecord;
 import group.yunxin.service.LoginRecordService;
 import group.yunxin.vo.PageResult;
 import group.yunxin.vo.Result;
+
 /**
  * controller
+ * 
  * @author Administrator
  *
  */
 @RestController
 @RequestMapping("/loginRecord")
-public class LoginRecordController {
+public class LoginRecordController
+{
 
 	@Autowired
 	private LoginRecordService loginRecordService;
-	
+
 	/**
 	 * 返回全部列表
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/findAll")
-	public List<TbLoginRecord> findAll(){			
+	public List<TbLoginRecord> findAll()
+	{
 		return loginRecordService.findAll();
 	}
-	
-	
+
 	/**
 	 * 返回全部列表
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/findPage")
-	public PageResult  findPage(int page,int rows){			
+	public PageResult findPage(int page, int rows)
+	{
 		return loginRecordService.findPage(page, rows);
 	}
-	
+
+	/**
+	 * 查询近两周登录记录
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/getLoginRecord")
+	public List<Integer> getLoginRecord()
+	{
+		return loginRecordService.getLoginRecord();
+	}
+
 	/**
 	 * 增加
+	 * 
 	 * @param loginRecord
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody TbLoginRecord loginRecord){
-		try {
+	public Result add(@RequestBody TbLoginRecord loginRecord)
+	{
+		try
+		{
 			loginRecordService.add(loginRecord);
 			return new Result(true, "增加成功");
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 			return new Result(false, "增加失败");
 		}
 	}
-	
+
 	/**
 	 * 修改
+	 * 
 	 * @param loginRecord
 	 * @return
 	 */
 	@RequestMapping("/update")
-	public Result update(@RequestBody TbLoginRecord loginRecord){
-		try {
+	public Result update(@RequestBody TbLoginRecord loginRecord)
+	{
+		try
+		{
 			loginRecordService.update(loginRecord);
 			return new Result(true, "修改成功");
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 			return new Result(false, "修改失败");
 		}
-	}	
-	
+	}
+
 	/**
 	 * 获取实体
+	 * 
 	 * @param id
 	 * @return
 	 */
 	@RequestMapping("/findOne")
-	public TbLoginRecord findOne(Long id){
-		return loginRecordService.findOne(id);		
+	public TbLoginRecord findOne(Long id)
+	{
+		return loginRecordService.findOne(id);
 	}
-	
+
 	/**
 	 * 批量删除
+	 * 
 	 * @param ids
 	 * @return
 	 */
 	@RequestMapping("/delete")
-	public Result delete(Long [] ids){
-		try {
+	public Result delete(Long[] ids)
+	{
+		try
+		{
 			loginRecordService.delete(ids);
-			return new Result(true, "删除成功"); 
-		} catch (Exception e) {
+			return new Result(true, "删除成功");
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 			return new Result(false, "删除失败");
 		}
 	}
-	
-		/**
+
+	/**
 	 * 查询+分页
+	 * 
 	 * @param brand
 	 * @param page
 	 * @param rows
 	 * @return
 	 */
 	@RequestMapping("/search")
-	public PageResult search(@RequestBody TbLoginRecord loginRecord, int page, int rows  ){
-		return loginRecordService.findPage(loginRecord, page, rows);		
+	public PageResult search(@RequestBody TbLoginRecord loginRecord, int page, int rows)
+	{
+		return loginRecordService.findPage(loginRecord, page, rows);
 	}
-	
+
 }

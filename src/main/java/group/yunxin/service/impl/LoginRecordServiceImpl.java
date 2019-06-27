@@ -1,5 +1,8 @@
 package group.yunxin.service.impl;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,6 +91,35 @@ public class LoginRecordServiceImpl implements LoginRecordService
 		{
 			loginRecordMapper.deleteByPrimaryKey(id);
 		}
+	}
+
+	/**
+	 * 查询近两周登录记录
+	 */
+	@Override
+	public List<Integer> getLoginRecord()
+	{
+		List<Integer> rs = new LinkedList<Integer>();
+		Date date2 = new Date();
+		Date date1 = new Date();
+		date1.setHours(0);
+		date1.setMinutes(0);
+		date1.setSeconds(0);
+		TbLoginRecordExample example = null;
+		for (int i = 0; i < 14; i++)
+		{
+			example = new TbLoginRecordExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andLoginTimeBetween(date1, date2);
+			rs.add(loginRecordMapper.countByExample(example));
+			//往前一天
+			date2 = date1;
+			Calendar c = Calendar.getInstance();
+			c.setTime(date1);
+			c.add(Calendar.DAY_OF_MONTH, -1);
+			date1 = c.getTime();
+		}
+		return rs;
 	}
 
 	@Override

@@ -62,4 +62,11 @@ public interface LoginRecordService
 	 */
 	public PageResult findPage(TbLoginRecord loginRecord, int pageNum, int pageSize);
 
+	/**
+	 * 查询近两周登录记录
+	 * 
+	 * @return
+	 */
+	public List<Integer> getLoginRecord();
+
 }
