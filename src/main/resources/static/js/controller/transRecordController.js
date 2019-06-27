@@ -7,10 +7,10 @@ app.filter('switchTime', function() {
 		datetime += d.getHours()+":";
 		if (d.getMinutes() < 10)
 			datetime += "0";
-		datetime += d.getMinutes()+":";
-		if (d.getSeconds() < 10)
-			datetime += "0";
-		datetime += d.getSeconds();
+		datetime += d.getMinutes();
+//		if (d.getSeconds() < 10)
+//			datetime += "0";
+//		datetime += d.getSeconds();
 		return datetime;
 	}
 });
@@ -43,13 +43,57 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 	$scope.findOne=function(id){				
 		transRecordService.findOne(id).success(
 			function(response){
-				$scope.entity= response;					
+				$scope.entity= response;
+				var d = new Date($scope.entity.time);
+				var flag = "AM";
+				var datetime = "";
+				if (d.getMonth()+1 < 10)
+					datetime += "0";
+				datetime += d.getMonth()+1 + "/";
+				if (d.getDate() < 10)
+					datetime += "0";
+				datetime += d.getDate() + "/" + d.getFullYear() + " ";
+				if (d.getHours() >= 12) {
+					flag = "PM";
+					if (d.getHours() > 13)
+						datetime += d.getHours() - 12;
+				} else {
+					datetime += d.getHours();
+				}
+				datetime += ":";
+				if (d.getMinutes() < 10)
+					datetime += "0";
+				datetime += d.getMinutes() + " " + flag;
+				//
+				$("#time1").val(datetime);				
 			}
 		);				
 	}
 	
 	//保存 
-	$scope.save=function(){				
+	$scope.save=function(){		
+		var pluginStr = $("#time1").val();
+
+		var databaseStr = "";
+		var arr = pluginStr.split("/");
+		var arr2 = arr[2].split(" ");
+		var hour = Number(arr2[1].split(":")[0]);
+		databaseStr += arr2[0] + "-" + arr[0] + "-" + arr[1] + "T";
+		
+		hour -= 8;
+		if (arr2[2] == "PM") {
+			hour += 12;
+		}
+		if (hour < 10)
+			hour = "0" + hour;
+		databaseStr += hour + ":" + arr2[1].split(":")[1] + ":00.000+0000";
+		
+		$scope.entity.time = databaseStr;
+		
+		
+		
+		
+		
 		var serviceObject;//服务层对象  				
 		if($scope.entity.id!=null){//如果有ID
 			serviceObject=transRecordService.update( $scope.entity ); //修改  

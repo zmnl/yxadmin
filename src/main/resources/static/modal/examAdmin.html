@@ -8,8 +8,6 @@
 <title>AdminLTE 3 | Dashboard 3</title>
 
 <!-- Font Awesome Icons -->
-<link rel="stylesheet"
-	href="plugins/font-awesome/css/font-awesome.min.css">
 <!-- IonIcons -->
 <link rel="stylesheet"
 	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -19,6 +17,11 @@
 <!-- Google Font: Source Sans Pro -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+	rel="stylesheet">
+<link
+	href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="assets/theme/css/tempusdominus-bootstrap-4.css"
 	rel="stylesheet">
 <!-- jQuery -->
 <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -32,16 +35,35 @@
 <script src="dist/js/demo.js"></script>
 <script src="dist/js/pages/dashboard3.js"></script>
 <script type="text/javascript" src="../plugins/angularjs/angular.min.js">  </script>
-    <!-- 分页组件开始 -->
-	<script src="../plugins/angularjs/pagination.js"></script>
-	<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
-	<!-- 分页组件结束 -->
-    
-    
-    <script type="text/javascript" src="../js/base_pagination.js">  </script>
-    <script type="text/javascript" src="../js/service/examService.js">  </script>
-    <script type="text/javascript" src="../js/controller/baseController.js">  </script>
-    <script type="text/javascript" src="../js/controller/examController.js">  </script>
+<!-- 分页组件开始 -->
+<script src="../plugins/angularjs/pagination.js"></script>
+<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+<!-- 分页组件结束 -->
+
+
+<script type="text/javascript" src="../js/base_pagination.js">  </script>
+<script type="text/javascript" src="../js/service/examService.js">  </script>
+<script type="text/javascript" src="../js/controller/baseController.js">  </script>
+<script type="text/javascript" src="../js/controller/examController.js">  </script>
+<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+<script type="text/javascript"
+	src="js/moment-timezone-with-data-2012-2022.min.js"></script>
+<script src="assets/theme/js/tempusdominus-bootstrap-4.js"></script>
+
+<style type="text/css">
+.table {
+	table-layout: fixed;
+}
+</style>
+
+<script type="text/javascript">
+	$(function() {
+		$('#datetimepicker1').datetimepicker();
+		$('#datetimepicker2').datetimepicker();
+		$('#datetimepicker3').datetimepicker();
+		$('#datetimepicker4').datetimepicker();
+	});
+</script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -67,18 +89,7 @@ to get the desired effect
 
 			</ul>
 
-			<!-- SEARCH FORM -->
-			<form class="form-inline ml-3">
-				<div class="input-group input-group-sm">
-					<input class="form-control form-control-navbar" type="search"
-						placeholder="Search" aria-label="Search">
-					<div class="input-group-append">
-						<button class="btn btn-navbar" type="submit">
-							<i class="fa fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
+
 
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
@@ -219,14 +230,11 @@ to get the desired effect
 								</p>
 						</a>
 							<ul class="nav nav-treeview" style="display: block;">
-								<li class="nav-item"><a href="bankAdmin.html" class="nav-link">
-										<i class="fa fa-circle-o nav-icon"></i>
+								<li class="nav-item"><a href="bankAdmin.html"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>题库管理</p>
 								</a></li>
-								<li class="nav-item"><a href="bcquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>编程题管理</p>
-								</a></li>
+
 								<li class="nav-item"><a href="pages/charts/inline.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>分类管理</p>
@@ -239,34 +247,12 @@ to get the desired effect
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>班级管理</p>
 								</a></li>
-								<li class="nav-link active"><a href="#"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+								<li class="nav-link active"><a href="#" class="nav-link">
+										<i class="fa fa-circle-o nav-icon"></i>
 										<p>考试管理</p>
 								</a></li>
-								<li class="nav-item"><a href="jdquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>简答题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="oneanswAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>单选题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="paperAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>试卷管理</p>
-								</a></li>
-								<li class="nav-item"><a href="pdquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>判断题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="quesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>试题管理</p>
-								</a></li>
-								<li class="nav-item"><a href="tkquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>填空题管理</p>
-								</a></li>
+
+
 								<li class="nav-item"><a href="transRecordAdmin.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>交易记录管理</p>
@@ -275,11 +261,7 @@ to get the desired effect
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>用户管理</p>
 								</a></li>
-						
-								<li class="nav-item"><a href="xzquesAdmin.html"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-										<p>选择题管理</p>
-								</a></li>
+
 							</ul></li>
 
 
@@ -293,317 +275,430 @@ to get the desired effect
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper"
 			style="min-height: 473.713px; padding-left: 30px;">
-			<body class="hold-transition skin-red sidebar-mini" ng-app="yunxin" ng-controller="examController" >
-  <!-- .box-body -->
-                    <div class="box-header with-border">
-                        <h3 class="box-title">管理</h3>
-                    </div>
+			<body class="hold-transition skin-red sidebar-mini" ng-app="yunxin"
+				ng-controller="examController">
+				<!-- .box-body -->
+				<div class="box-header with-border">
+					<h3 class="box-title">管理</h3>
+				</div>
 
-                    <div class="box-body">
+				<div class="box-body">
 
-                        <!-- 数据表格 -->
-                        <div class="table-box">
+					<!-- 数据表格 -->
+					<div class="table-box">
 
-                            <!--工具栏-->
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="entity={}"><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" title="删除" ng-click="dele()"><i class="fa fa-trash-o"></i> 删除</button>           
-                                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">							       
-                                </div>
-                            </div>
-                            <!--工具栏/-->
+						<!--工具栏-->
+						<div class="pull-left">
+							<div class="form-group form-inline">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" title="新建"
+										data-toggle="modal" data-target="#editModal"
+										ng-click="entity={}">
+										<i class="fa fa-file-o"></i> 新建
+									</button>
+									<button type="button" class="btn btn-default" title="删除"
+										ng-click="dele()">
+										<i class="fa fa-trash-o"></i> 删除
+									</button>
+									<button type="button" class="btn btn-default" title="刷新"
+										onclick="window.location.reload();">
+										<i class="fa fa-refresh"></i> 刷新
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="box-tools pull-right">
+							<div class="has-feedback"></div>
+						</div>
+						<!--工具栏/-->
 
-			                  <!--数据列表-->
-			                  <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
-			                      <thead>
-			                          <tr>
-			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
-			                              </th> 
-										                               <th class="sorting">考试的id</th>			
-                             <th class="sorting">考试的标题</th>			
-                             <th class="sorting">老师的id</th>			
-                             <th class="sorting">考试创建的时间</th>			
-                             <th class="sorting">是否需要摄像头</th>			
-                             <th class="sorting">是否公开</th>			
-                             <th class="sorting">价格</th>			
-                             <th class="sorting">难易程度</th>			
-                             <th class="sorting">考试开始的时间</th>			
-                             <th class="sorting">考试停止的时间</th>			
-                             <th class="sorting"></th>			
-                             <th class="sorting">考试持续的时间</th>			
-                             <th class="sorting">最大的页面跳转次数</th>			
-                             <th class="sorting">过期后是否还允许看题</th>			
-                             <th class="sorting">每个题的分数</th>			
-                             <th class="sorting">考试的总分</th>			
-								     				
-					                      <th class="text-center">操作</th>
-			                          </tr>
-			                      </thead>
-			                      <tbody>
-			                          <tr ng-repeat="entity in list">
-			                              <td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>			                              
-				                                                       <td>{{entity.id}}</td>			
-                             <td>{{entity.title}}</td>			
-                             <td>{{entity.teacherId}}</td>			
-                             <td>{{entity.createTime|switchTime}}</td>			
-                             <td>{{entity.needCamera}}</td>			
-                             <td>{{entity.isPublic}}</td>			
-                             <td>{{entity.price}}</td>			
-                             <td>{{entity.diff}}</td>			
-                             <td>{{entity.timeStart|switchTime}}</td>			
-                             <td>{{entity.timeStop|switchTime}}</td>			
-                             <td>{{entity.timePublicMarks}}</td>			
-                             <td>{{entity.timeLast}}</td>			
-                             <td>{{entity.maxSwitch}}</td>			
-                             <td>{{entity.allowBrowseAfterTime}}</td>			
-                             <td>{{entity.marks}}</td>			
-                             <td>{{entity.totalMark}}</td>			
-		                                 
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)" >修改</button>                                           
-		                                  </td>
-			                          </tr>									 
-			                      </tbody>
-			                  </table>
-			                  <!--数据列表/-->                        
-                        </div>
-                        <!-- 数据表格 /-->
-                        <!-- 分页 -->
-						<tm-pagination conf="paginationConf"></tm-pagination>
-                     </div>
-                    <!-- /.box-body -->
-         
+						<!--数据列表-->
+						<table id="dataList"
+							class="table table-bordered table-striped table-hover dataTable">
+							<thead>
+								<tr>
+									<th class="" style="padding-right:0px"><input id="selall"
+										type="checkbox" class="icheckbox_square-blue"></th>
+									<th class="sorting">考试id</th>
+									<th class="sorting">考试标题</th>
+									<th class="sorting">老师id</th>
+									<th class="sorting">创建时间</th>
+									<th class="sorting">需要摄像头</th>
+									<th class="sorting">公开</th>
+									<th class="sorting">价格(单位：积分)</th>
+									<th class="sorting">难易程度</th>
+									<th class="sorting">开始时间</th>
+									<th class="sorting">停止时间</th>
+									<th class="sorting">公布分数时间</th>
+									<th class="sorting">持续时间(单位：分钟)</th>
+									<th class="sorting">最大页面跳转次数</th>
+									<th class="sorting">过期后是否允许看题</th>
+									<th class="sorting" style="
+    width: 110px;
+">考试图片</th>
+									<th class="sorting" style="width: 120px;">每题分数</th>
+									<th class="sorting">考试总分</th>
+
+									<th class="text-center">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="entity in list">
+									<td><input type="checkbox"
+										ng-click="updateSelection($event,entity.id)"></td>
+									<td>{{entity.id}}</td>
+									<td>{{entity.title}}</td>
+									<td>{{entity.teacherId}}</td>
+									<td>{{entity.createTime|switchTime}}</td>
+									<td ng-if="entity.needCamera == 0">否</td>
+									<td ng-if="entity.needCamera == 1">是</td>
+									<td ng-if="entity.isPublic == 0">否</td>
+									<td ng-if="entity.isPublic == 1">是</td>
+									<td>{{entity.price}}</td>
+									<td ng-if="entity.diff == 0">简单</td>
+									<td ng-if="entity.diff == 1">中等</td>
+									<td ng-if="entity.diff == 2">困难</td>
+									<td>{{entity.timeStart|switchTime}}</td>
+									<td>{{entity.timeStop|switchTime}}</td>
+									<td>{{entity.timePublicMarks|switchTime}}</td>
+									<td>{{entity.timeLast}}</td>
+									<td>{{entity.maxSwitch}}</td>
+									<td ng-if="entity.allowBrowseAfterTime == 0">否</td>
+									<td ng-if="entity.allowBrowseAfterTime == 1">是</td>
+
+									<td><img alt="" src="{{entity.marks | getPic}}"
+										width="100px;" height="70px"></td>
+									<td>{{entity.marks | getMarks}}</td>
+									<td>{{entity.totalMark}}</td>
+
+									<td class="text-center">
+										<button type="button" class="btn bg-olive btn-xs"
+											style="background-color:#3d9970 !important;color:white"
+											data-toggle="modal" data-target="#editModal"
+											ng-click="findOne(entity.id)">修改</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!--数据列表/-->
+					</div>
+					<!-- 数据表格 /-->
+					<!-- 分页 -->
+					<tm-pagination conf="paginationConf"></tm-pagination>
+				</div>
+				<!-- /.box-body -->
+
+				<!-- 编辑窗口 -->
+				<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 id="myModalLabel">编辑</h3>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
+
+							</div>
+							<div class="modal-body">
+								<table class="table table-bordered table-striped" width="800px">
+									<tr>
+
+										<td>考试标题</td>
+
+										<td><input class="form-control" ng-model="entity.title"
+											placeholder="考试的标题"></td>
+
+									</tr>
+									<tr>
+
+										<td>老师id</td>
+
+										<td><input class="form-control"
+											ng-model="entity.teacherId" placeholder="老师的id"></td>
+
+									</tr>
+									<tr>
+
+										<td>创建时间</td>
+
+										<td><div class="form-group">
+												<div class="input-group date" id="datetimepicker1"
+													data-target-input="nearest">
+													<input type="text"
+														class="form-control datetimepicker-input"
+														data-target="#datetimepicker1"
+														value="{{entity.createTime | database2plugin}}" id="time1" style="
+    width: 191px"; />
+													<div class="input-group-append"
+														data-target="#datetimepicker1"
+														data-toggle="datetimepicker">
+														<div class="input-group-text" style="height: 33.5px"; >
+															<i class="fa fa-calendar"></i>
+														</div>
+													</div>
+												</div>
+											</div></td>
+
+									</tr>
+									<tr>
+
+										<td>需要摄像头</td>
+
+										<td><input class="form-control"
+											ng-model="entity.needCamera" placeholder="是否需要摄像头"></td>
+
+									</tr>
+									<tr>
+
+										<td>公开</td>
+
+										<td><input class="form-control"
+											ng-model="entity.isPublic" placeholder="是否公开"></td>
+
+									</tr>
+									<tr>
+
+										<td>价格(单位：积分)</td>
+
+										<td><input class="form-control" ng-model="entity.price"
+											placeholder="价格"></td>
+
+									</tr>
+									<tr>
+
+										<td>难易程度</td>
+
+										<td><input class="form-control" ng-model="entity.diff"
+											placeholder="0：简单；1:中等；3：困难"></td>
+
+									</tr>
+									<tr>
+
+										<td>开始时间</td>
+
+										<td><div class="form-group">
+												<div class="input-group date" id="datetimepicker2"
+													data-target-input="nearest">
+													<input type="text"
+														class="form-control datetimepicker-input"
+														data-target="#datetimepicker2"
+														value="{{entity.createTime | database2plugin}}" id="time2" style="
+    width: 191px"; />
+													<div class="input-group-append"
+														data-target="#datetimepicker2"
+														data-toggle="datetimepicker">
+														<div class="input-group-text" style="height: 33.5px";>
+															<i class="fa fa-calendar"></i>
+														</div>
+													</div>
+												</div>
+											</div></td>
+
+									</tr>
+									<tr>
+
+										<td>停止时间</td>
+
+										<td><div class="form-group">
+												<div class="input-group date" id="datetimepicker3"
+													data-target-input="nearest">
+													<input type="text"
+														class="form-control datetimepicker-input"
+														data-target="#datetimepicker3"
+														value="{{entity.createTime | database2plugin}}" id="time3" style="
+    width: 191px";/>
+													<div class="input-group-append"
+														data-target="#datetimepicker3"
+														data-toggle="datetimepicker">
+														<div class="input-group-text" style="height: 33.5px";>
+															<i class="fa fa-calendar"></i>
+														</div>
+													</div>
+												</div>
+											</div></td>
+
+									</tr>
+									<tr>
+
+										<td>公布分数时间</td>
+
+										<td><div class="form-group">
+												<div class="input-group date" id="datetimepicker4"
+													data-target-input="nearest">
+													<input type="text"
+														class="form-control datetimepicker-input"
+														data-target="#datetimepicker4"
+														value="{{entity.createTime | database2plugin}}" id="time4" style="
+    width: 191px"; />
+													<div class="input-group-append"
+														data-target="#datetimepicker4"
+														data-toggle="datetimepicker">
+														<div class="input-group-text" style="height: 33.5px";>
+															<i class="fa fa-calendar"></i>
+														</div>
+													</div>
+												</div>
+											</div></td>
+
+									</tr>
+									<tr>
+
+										<td>持续时间</td>
+
+										<td><input class="form-control"
+											ng-model="entity.timeLast" placeholder="考试持续的时间"></td>
+
+									</tr>
+									<tr>
+
+										<td>最大页面跳转次数</td>
+
+										<td><input class="form-control"
+											ng-model="entity.maxSwitch" placeholder="最大的页面跳转次数"></td>
+
+									</tr>
+									<tr>
+
+										<td>过期后是否还允许看题</td>
+
+										<td><input class="form-control"
+											ng-model="entity.allowBrowseAfterTime"
+											placeholder="过期后是否还允许看题"></td>
+
+									</tr>
+									<tr>
+
+										<td>图片地址</td>
+
+										<td><input class="form-control" id="marks1"
+											placeholder="图片地址" value="{{entity.marks | getPic}}"></td>
+
+									</tr>
+									<tr>
+
+										<td>每题分数</td>
+
+										<td><input class="form-control" id="marks2"
+											placeholder="每个题的分数" value="{{entity.marks | getMarks}}"></td>
+
+									</tr>
+									<tr>
+
+										<td>考试总分</td>
+
+										<td><input class="form-control"
+											ng-model="entity.totalMark" placeholder="考试的总分"></td>
+
+									</tr>
+
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-success" data-dismiss="modal"
+									aria-hidden="true" ng-click="save()">保存</button>
+								<button class="btn btn-default" data-dismiss="modal"
+									aria-hidden="true">关闭</button>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+	<!-- /.content-wrapper -->
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+
+	<!-- Main Footer -->
+	<footer class="main-footer">
+		<!-- To the right -->
+		<div class="float-right d-none d-sm-block-down">Anything you
+			want</div>
+		<!-- Default to the left -->
+		<div class="login-extra text-center" style="text-align:center">
+			<a href="http://www.miit.gov.cn/">豫ICP备18041064号</a>
+		</div>
+	</footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
 <!-- 编辑窗口 -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
-	<div class="modal-content">
-		<div class="modal-header">
-		<h3 id="myModalLabel">编辑</h3>
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			
-		</div>
-		<div class="modal-body">	
-			 <table class="table table-bordered table-striped"  width="800px">			
-		      	  		      	<tr>
-                             
-<td>考试的标题</td>
-
-                             <td><input  class="form-control" ng-model="entity.title" placeholder="考试的标题" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>老师的id</td>
-
-                             <td><input  class="form-control" ng-model="entity.teacherId" placeholder="老师的id" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>考试创建的时间</td>
-
-                             <td><input  class="form-control" ng-model="entity.createTime" placeholder="考试创建的时间" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>是否需要摄像头</td>
-
-                             <td><input  class="form-control" ng-model="entity.needCamera" placeholder="是否需要摄像头" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>是否公开</td>
-
-                             <td><input  class="form-control" ng-model="entity.isPublic" placeholder="是否公开" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>价格</td>
-
-                             <td><input  class="form-control" ng-model="entity.price" placeholder="价格" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>难易程度</td>
-
-                             <td><input  class="form-control" ng-model="entity.diff" placeholder="难易程度" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>考试开始的时间</td>
-
-                             <td><input  class="form-control" ng-model="entity.timeStart" placeholder="考试开始的时间" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>考试停止的时间</td>
-
-                             <td><input  class="form-control" ng-model="entity.timeStop" placeholder="考试停止的时间" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td></td>
-
-                             <td><input  class="form-control" ng-model="entity.timePublicMarks" placeholder="" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>考试持续的时间</td>
-
-                             <td><input  class="form-control" ng-model="entity.timeLast" placeholder="考试持续的时间" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>最大的页面跳转次数</td>
-
-                             <td><input  class="form-control" ng-model="entity.maxSwitch" placeholder="最大的页面跳转次数" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>过期后是否还允许看题</td>
-
-                             <td><input  class="form-control" ng-model="entity.allowBrowseAfterTime" placeholder="过期后是否还允许看题" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>每个题的分数</td>
-
-                             <td><input  class="form-control" ng-model="entity.marks" placeholder="每个题的分数" ></td>
-
-                        </tr>		
-		      	<tr>
-                             
-<td>考试的总分</td>
-
-                             <td><input  class="form-control" ng-model="entity.totalMark" placeholder="考试的总分" ></td>
-
-                        </tr>		
-		  		      	
-			 </table>				
-		</div>
-		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
-			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-		</div>
-	  </div>
-	</div>
-</div>
-   
-</div>
-		</div>
-		<!-- /.content-wrapper -->
-
-		<!-- Control Sidebar -->
-		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Control sidebar content goes here -->
-		</aside>
-		<!-- /.control-sidebar -->
-
-		<!-- Main Footer -->
-		<footer class="main-footer">
-			<!-- To the right -->
-			<div class="float-right d-none d-sm-block-down">Anything you
-				want</div>
-			<!-- Default to the left -->
-			<strong>Copyright &copy; 2018 <a href="https://adminlte.io">AdminLTE.io</a>.
-			</strong> All rights reserved.
-		</footer>
-	</div>
-	<!-- ./wrapper -->
-
-	<!-- REQUIRED SCRIPTS -->
-
-	<!-- 编辑窗口 -->
-	<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
 				<h3 id="myModalLabel">编辑</h3>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">×</button>
-					
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-striped" width="800px">
-						<tr>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
 
-							<td>密码</td>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-striped" width="800px">
+					<tr>
 
-							<td><input class="form-control" ng-model="entity.password"
-								placeholder="密码"></td>
+						<td>密码</td>
 
-						</tr>
-						<tr>
+						<td><input class="form-control" ng-model="entity.password"
+							placeholder="密码"></td>
 
-							<td>邮箱</td>
+					</tr>
+					<tr>
 
-							<td><input class="form-control" ng-model="entity.email"
-								placeholder="邮箱"></td>
+						<td>邮箱</td>
 
-						</tr>
-						<tr>
+						<td><input class="form-control" ng-model="entity.email"
+							placeholder="邮箱"></td>
 
-							<td>QQ号</td>
+					</tr>
+					<tr>
 
-							<td><input class="form-control" ng-model="entity.qq"
-								placeholder="QQ号"></td>
+						<td>QQ号</td>
 
-						</tr>
-						<tr>
+						<td><input class="form-control" ng-model="entity.qq"
+							placeholder="QQ号"></td>
 
-							<td>详情</td>
+					</tr>
+					<tr>
 
-							<td><input class="form-control" ng-model="entity.detail"
-								placeholder="详情"></td>
+						<td>详情</td>
 
-						</tr>
-						<tr>
+						<td><input class="form-control" ng-model="entity.detail"
+							placeholder="详情"></td>
 
-							<td>备份1</td>
+					</tr>
+					<tr>
 
-							<td><input class="form-control" ng-model="entity.back1"
-								placeholder="备份1"></td>
+						<td>备份1</td>
 
-						</tr>
-						<tr>
+						<td><input class="form-control" ng-model="entity.back1"
+							placeholder="备份1"></td>
 
-							<td>备份2</td>
+					</tr>
+					<tr>
 
-							<td><input class="form-control" ng-model="entity.back2"
-								placeholder="备份2"></td>
+						<td>备份2</td>
 
-						</tr>
+						<td><input class="form-control" ng-model="entity.back2"
+							placeholder="备份2"></td>
 
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-success" data-dismiss="modal"
-						aria-hidden="true" ng-click="save()">保存</button>
-					<button class="btn btn-default" data-dismiss="modal"
-						aria-hidden="true">关闭</button>
-				</div>
+					</tr>
+
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" data-dismiss="modal"
+					aria-hidden="true" ng-click="save()">保存</button>
+				<button class="btn btn-default" data-dismiss="modal"
+					aria-hidden="true">关闭</button>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

@@ -20,6 +20,8 @@ public class TbBank implements Serializable
 	private Date createTime; // 这个字段原含义废弃掉，意义改为是否公开，非null即意为公开
 
 	private Date updateTime;
+	
+	
 
 	public Long getId()
 	{

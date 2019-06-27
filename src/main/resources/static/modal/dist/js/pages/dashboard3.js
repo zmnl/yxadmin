@@ -9,7 +9,7 @@ $(function () {
   var mode      = 'index'
   var intersect = true
 
-  var $salesChart = $('#sales-chart')
+  var $salesChart = $('#sales-chart1')
   var salesChart  = new Chart($salesChart, {
     type   : 'bar',
     data   : {
@@ -18,12 +18,12 @@ $(function () {
         {
           backgroundColor: '#007bff',
           borderColor    : '#007bff',
-          data           : [1000, 2000, 3000, 2500, 2700, 2500, 3000]
+          data           : [4500, 2000, 3000, 2500, 2700, 2500, 3000]
         },
         {
           backgroundColor: '#ced4da',
           borderColor    : '#ced4da',
-          data           : [700, 1700, 2700, 2000, 1800, 1500, 2000]
+          data           : [3000, 1700, 2700, 2000, 1800, 1500, 2000]
         }
       ]
     },
