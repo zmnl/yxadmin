@@ -62,4 +62,6 @@ public interface TransRecordService
 	 */
 	public PageResult findPage(TbTransRecord transRecord, int pageNum, int pageSize);
 
+	public List<Double> getRecord();
+
 }

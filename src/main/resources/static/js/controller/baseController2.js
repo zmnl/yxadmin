@@ -11,9 +11,9 @@ app.controller('baseController' ,function($scope){
 	//分页控件配置 
 	$scope.paginationConf = {
          currentPage: 1,
-         totalItems: 10,
-         itemsPerPage: 10,
-         perPageOptions: [10, 20, 30, 40, 50],
+         totalItems: 5,
+         itemsPerPage: 5,
+         perPageOptions: [5,10, 20, 30, 40, 50],
          onChange: function(){
         	 $scope.showLoginRecord();//重新加载
      	 }

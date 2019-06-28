@@ -101,6 +101,24 @@ public class TransRecordController
 		return transRecordService.findOne(id);
 	}
 
+	
+
+	
+	/**
+	 * 得到14天充值记录
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/getRecord")
+	public List<Double> getRecord()
+	{
+		return transRecordService.getRecord();
+	}
+	
+	
+	
+	
+	
 	/**
 	 * 批量删除
 	 * 

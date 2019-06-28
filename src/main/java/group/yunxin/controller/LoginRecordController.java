@@ -148,5 +148,11 @@ public class LoginRecordController
 	{
 		return loginRecordService.findPage(loginRecord, page, rows);
 	}
+	
+	@RequestMapping("/showLoginRecord")
+	public PageResult showLoginRecord(int pageNum, int pageSize)
+	{
+		return loginRecordService.showLoginRecord(pageNum,  pageSize);
+	}
 
 }

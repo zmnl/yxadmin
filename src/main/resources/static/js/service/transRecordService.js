@@ -28,5 +28,9 @@ app.service('transRecordService',function($http){
 	//搜索
 	this.search=function(page,rows,searchEntity){
 		return $http.post('/transRecord/search?page='+page+"&rows="+rows, searchEntity);
-	}    	
+	}  
+	//画图
+	this.draw2=function(){
+		return $http.get("/transRecord/getRecord");
+	}
 });

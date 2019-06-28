@@ -128,6 +128,7 @@ public class ChargeRecordServiceImpl implements ChargeRecordService
 			TbChargeRecordExample example = new TbChargeRecordExample();
 			Criteria criteria = example.createCriteria();
 			criteria.andTimeBetween(date1, date2);
+			criteria.andStatusEqualTo(1);
 			List<TbChargeRecord> list = chargeRecordMapper.selectByExample(example);
 			double today = 0;
 			for (TbChargeRecord t : list)
