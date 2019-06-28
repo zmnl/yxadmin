@@ -68,5 +68,7 @@ public interface LoginRecordService
 	 * @return
 	 */
 	public List<Integer> getLoginRecord();
+	
+	public PageResult showLoginRecord(int pageNum, int pageSize);
 
 }

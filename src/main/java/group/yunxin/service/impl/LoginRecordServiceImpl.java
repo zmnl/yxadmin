@@ -142,5 +142,17 @@ public class LoginRecordServiceImpl implements LoginRecordService
 		Page<TbLoginRecord> page = (Page<TbLoginRecord>) loginRecordMapper.selectByExample(example);
 		return new PageResult(page.getTotal(), page.getResult());
 	}
+	
+	@Override
+	public PageResult showLoginRecord(int pageNum, int pageSize)
+	{
+		PageHelper.startPage(pageNum, pageSize);
+		
+		TbLoginRecordExample example = new TbLoginRecordExample();
+//		Criteria criteria = example.createCriteria();
+		example.setOrderByClause("login_time desc");
+		Page<TbLoginRecord> page = (Page<TbLoginRecord>) loginRecordMapper.selectByExample(example);
+		return new PageResult(page.getTotal(), page.getResult());
+	}
 
 }

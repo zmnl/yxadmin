@@ -7,12 +7,11 @@
 
 <title>AdminLTE 3 | Dashboard 3</title>
 
+<link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
 <!-- Font Awesome Icons -->
 <link rel="stylesheet"
 	href="plugins/font-awesome/css/font-awesome.min.css">
 <!-- IonIcons -->
-<link rel="stylesheet"
-	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="dist/css/adminlte.min.css">
 <!-- Google Font: Source Sans Pro -->
@@ -36,15 +35,44 @@
 <!-- 分页组件开始 -->
 <script src="../plugins/angularjs/pagination.js"></script>
 <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+<style type="text/css">
+*{
+font-size:104%;
+}
+h3.card-title
+{
+
+    font-size: 22px;
+    padding-top: 10px;
+    padding-left: 10px;
+
+}
+
+
+
+span.text-bold.text-lg
+{
+
+font-size:20px;
+}
+</style>
 <!-- 分页组件结束 -->
 
 
 <script type="text/javascript" src="../js/base_pagination.js">  </script>
 <script type="text/javascript"
 	src="../js/service/chargeRecordService.js">  </script>
-<script type="text/javascript" src="../js/controller/baseController.js">  </script>
+<script type="text/javascript" src="../js/service/loginRecordService.js">  </script>
+<script type="text/javascript" src="../js/controller/baseController2.js">  </script>
 <script type="text/javascript"
 	src="../js/controller/chargeRecordController.js">  </script>
+<script type="text/javascript"
+	src="../js/controller/loginRecordController.js">  </script>
+
+
+<script type="text/javascript" src="../js/service/transRecordService.js">  </script>
+<script type="text/javascript"
+	src="../js/controller/transRecordController.js">  </script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -56,8 +84,7 @@ to get the desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition sidebar-mini" ng-app="yunxin"
-	ng-controller="chargeRecordController" ng-init="draw()">
+<body class="hold-transition sidebar-mini" ng-app="yunxin">
 	<div class="wrapper">
 		<!-- Navbar -->
 		<nav
@@ -275,23 +302,22 @@ to get the desired effect
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-6">
-							<div class="card">
+							<div class="card" ng-controller="loginRecordController"
+								ng-init="draw1()">
 								<div class="card-header no-border">
 									<div class="d-flex justify-content-between">
 										<h3 class="card-title">浏览量</h3>
-										<a href="javascript:void(0);">View Report</a>
 									</div>
 								</div>
 								<div class="card-body">
 									<div class="d-flex">
 										<p class="d-flex flex-column">
-											<span class="text-bold text-lg">820</span> <span>Visitors
-												Over Time</span>
+											<span class="text-bold text-lg" id="total1">820</span> <span>本周访客量</span>
 										</p>
 										<p class="ml-auto d-flex flex-column text-right">
-											<span class="text-success"> <i class="fa fa-arrow-up"></i>
-												12.5%
-											</span> <span class="text-muted">Since last week</span>
+											<span class="text-success"> <i class="fa fa-arrow-up"
+												id="arrow1"></i> <aaa id="rate1">12.5%</aaa>
+											</span> <span class="text-muted">比上周</span>
 										</p>
 									</div>
 									<!-- /.d-flex -->
@@ -302,259 +328,31 @@ to get the desired effect
 
 									<div class="d-flex flex-row justify-content-end">
 										<span class="mr-2"> <i
-											class="fa fa-square text-primary"></i> This Week
-										</span> <span> <i class="fa fa-square text-gray"></i> Last
-											Week
+											class="fa fa-square text-primary"></i> 本周
+										</span> <span> <i class="fa fa-square text-gray"></i> 上周
 										</span>
 									</div>
 								</div>
 							</div>
 							<!-- /.card -->
 
-							<div class="card">
-								<div class="card-header d-flex p-0 ui-sortable-handle"
-									style="cursor: move;">
-									<h3 class="card-title p-3">
-										<i class="fa fa-pie-chart mr-1"></i> 交易记录
-									</h3>
-									<ul class="nav nav-pills ml-auto p-2">
-										<li class="nav-item"><a class="nav-link active"
-											href="#revenue-chart" data-toggle="tab">Area</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="#sales-chart" data-toggle="tab">Donut</a></li>
-									</ul>
-								</div>
-								<!-- /.card-header -->
-								<div class="card-body">
-									<div class="tab-content p-0">
-										<!-- Morris chart - Sales -->
-										<div class="chart tab-pane active" id="revenue-chart"
-											style="position: relative; height: 300px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-											<svg height="300" version="1.1" width="676"
-												xmlns="http://www.w3.org/2000/svg"
-												style="overflow: hidden; position: relative; left: -0.5px; top: -0.4px;">
-												<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc>
-												<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
-												<text x="50.734375" y="259" text-anchor="end"
-													font="10px &quot;Arial&quot;" stroke="none" fill="#888888"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font: 12px sans-serif;"
-													font-size="12px" font-family="sans-serif"
-													font-weight="normal">
-												<tspan dy="4.40625"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text>
-												<path fill="none" stroke="#aaaaaa"
-													d="M63.234375,259H651.025" stroke-width="0.5"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<text x="50.734375" y="200.5" text-anchor="end"
-													font="10px &quot;Arial&quot;" stroke="none" fill="#888888"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font: 12px sans-serif;"
-													font-size="12px" font-family="sans-serif"
-													font-weight="normal">
-												<tspan dy="4.40625"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">7,500</tspan></text>
-												<path fill="none" stroke="#aaaaaa"
-													d="M63.234375,200.5H651.025" stroke-width="0.5"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<text x="50.734375" y="142" text-anchor="end"
-													font="10px &quot;Arial&quot;" stroke="none" fill="#888888"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font: 12px sans-serif;"
-													font-size="12px" font-family="sans-serif"
-													font-weight="normal">
-												<tspan dy="4.40625"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">15,000</tspan></text>
-												<path fill="none" stroke="#aaaaaa"
-													d="M63.234375,142H651.025" stroke-width="0.5"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<text x="50.734375" y="83.5" text-anchor="end"
-													font="10px &quot;Arial&quot;" stroke="none" fill="#888888"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font: 12px sans-serif;"
-													font-size="12px" font-family="sans-serif"
-													font-weight="normal">
-												<tspan dy="4.40625"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">22,500</tspan></text>
-												<path fill="none" stroke="#aaaaaa"
-													d="M63.234375,83.5H651.025" stroke-width="0.5"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<text x="50.734375" y="25" text-anchor="end"
-													font="10px &quot;Arial&quot;" stroke="none" fill="#888888"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font: 12px sans-serif;"
-													font-size="12px" font-family="sans-serif"
-													font-weight="normal">
-												<tspan dy="4.40625"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">30,000</tspan></text>
-												<path fill="none" stroke="#aaaaaa" d="M63.234375,25H651.025"
-													stroke-width="0.5"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<text x="543.1800615127581" y="271.5" text-anchor="middle"
-													font="10px &quot;Arial&quot;" stroke="none" fill="#888888"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font: 12px sans-serif;"
-													font-size="12px" font-family="sans-serif"
-													font-weight="normal" transform="matrix(1,0,0,1,0,8)">
-												<tspan dy="4.40625"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2013</tspan></text>
-												<text x="281.7810715370595" y="271.5" text-anchor="middle"
-													font="10px &quot;Arial&quot;" stroke="none" fill="#888888"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font: 12px sans-serif;"
-													font-size="12px" font-family="sans-serif"
-													font-weight="normal" transform="matrix(1,0,0,1,0,8)">
-												<tspan dy="4.40625"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2012</tspan></text>
-												<path fill="#579de7" stroke="none"
-													d="M63.234375,217.4104C79.66108748481166,217.91740000000001,112.51451245443498,220.948675,128.94122493924664,219.4384C145.3679374240583,217.928125,178.22136239368163,207.57511147540984,194.6480748784933,205.3282C210.89623614064396,203.10571147540983,243.3925586649453,203.35772500000002,259.640719927096,201.5608C275.8888811892466,199.763875,308.385203713548,193.47297786885247,324.6333649756986,190.9528C341.0600774605103,188.40492786885247,373.91350243013363,181.182325,390.3402149149453,181.2886C406.766927399757,181.394875,439.62035236938027,202.66209180327868,456.04706485419194,191.803C472.29522611634263,181.0619418032787,504.7915486406439,101.29188618784531,521.0397099027946,94.888C537.1093199422843,88.55448618784531,569.2485400212636,134.20465000000002,585.3181500607533,140.85340000000002C601.744862545565,147.64990000000003,634.5982875151883,146.7151,651.025,148.669L651.025,259L63.234375,259Z"
-													fill-opacity="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></path>
-												<path fill="none" stroke="#007cff"
-													d="M63.234375,217.4104C79.66108748481166,217.91740000000001,112.51451245443498,220.948675,128.94122493924664,219.4384C145.3679374240583,217.928125,178.22136239368163,207.57511147540984,194.6480748784933,205.3282C210.89623614064396,203.10571147540983,243.3925586649453,203.35772500000002,259.640719927096,201.5608C275.8888811892466,199.763875,308.385203713548,193.47297786885247,324.6333649756986,190.9528C341.0600774605103,188.40492786885247,373.91350243013363,181.182325,390.3402149149453,181.2886C406.766927399757,181.394875,439.62035236938027,202.66209180327868,456.04706485419194,191.803C472.29522611634263,181.0619418032787,504.7915486406439,101.29188618784531,521.0397099027946,94.888C537.1093199422843,88.55448618784531,569.2485400212636,134.20465000000002,585.3181500607533,140.85340000000002C601.744862545565,147.64990000000003,634.5982875151883,146.7151,651.025,148.669"
-													stroke-width="3"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<circle cx="63.234375" cy="217.4104" r="4" fill="#007cff"
-													stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="128.94122493924664" cy="219.4384" r="4.48"
-													fill="#007cff" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="194.6480748784933" cy="205.3282" r="4"
-													fill="#007cff" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="259.640719927096" cy="201.5608" r="4"
-													fill="#007cff" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="324.6333649756986" cy="190.9528" r="4"
-													fill="#007cff" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="390.3402149149453" cy="181.2886" r="4"
-													fill="#007cff" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="456.04706485419194" cy="191.803" r="4"
-													fill="#007cff" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="521.0397099027946" cy="94.888" r="4"
-													fill="#007cff" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="585.3181500607533" cy="140.85340000000002" r="4"
-													fill="#007cff" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="651.025" cy="148.669" r="4" fill="#007cff"
-													stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<path fill="#5d646a" stroke="none"
-													d="M63.234375,238.2052C79.66108748481166,237.9868,112.51451245443498,239.52145000000002,128.94122493924664,237.3316C145.3679374240583,235.14175,178.22136239368163,221.65594426229507,194.6480748784933,220.6864C210.89623614064396,219.72739426229506,243.3925586649453,231.46795,259.640719927096,229.6174C275.8888811892466,227.76685,308.385203713548,207.72728606557376,324.6333649756986,205.882C341.0600774605103,204.01643606557377,373.91350243013363,212.83375,390.3402149149453,214.774C406.766927399757,216.71425,439.62035236938027,230.62202295081966,456.04706485419194,221.404C472.29522611634263,212.28617295081966,504.7915486406439,147.18252900552486,521.0397099027946,141.4306C537.1093199422843,135.74187900552485,569.2485400212636,169.23757857142857,585.3181500607533,175.6414C601.744862545565,182.18752857142857,634.5982875151883,188.83315000000002,651.025,193.2304L651.025,259L63.234375,259Z"
-													fill-opacity="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></path>
-												<path fill="none" stroke="#495057"
-													d="M63.234375,238.2052C79.66108748481166,237.9868,112.51451245443498,239.52145000000002,128.94122493924664,237.3316C145.3679374240583,235.14175,178.22136239368163,221.65594426229507,194.6480748784933,220.6864C210.89623614064396,219.72739426229506,243.3925586649453,231.46795,259.640719927096,229.6174C275.8888811892466,227.76685,308.385203713548,207.72728606557376,324.6333649756986,205.882C341.0600774605103,204.01643606557377,373.91350243013363,212.83375,390.3402149149453,214.774C406.766927399757,216.71425,439.62035236938027,230.62202295081966,456.04706485419194,221.404C472.29522611634263,212.28617295081966,504.7915486406439,147.18252900552486,521.0397099027946,141.4306C537.1093199422843,135.74187900552485,569.2485400212636,169.23757857142857,585.3181500607533,175.6414C601.744862545565,182.18752857142857,634.5982875151883,188.83315000000002,651.025,193.2304"
-													stroke-width="3"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<circle cx="63.234375" cy="238.2052" r="4" fill="#495057"
-													stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="128.94122493924664" cy="237.3316" r="4.6"
-													fill="#495057" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="194.6480748784933" cy="220.6864" r="4"
-													fill="#495057" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="259.640719927096" cy="229.6174" r="4"
-													fill="#495057" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="324.6333649756986" cy="205.882" r="4"
-													fill="#495057" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="390.3402149149453" cy="214.774" r="4"
-													fill="#495057" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="456.04706485419194" cy="221.404" r="4"
-													fill="#495057" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="521.0397099027946" cy="141.4306" r="4"
-													fill="#495057" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="585.3181500607533" cy="175.6414" r="4"
-													fill="#495057" stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
-												<circle cx="651.025" cy="193.2304" r="4" fill="#495057"
-													stroke="#ffffff" stroke-width="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg>
-											<div class="morris-hover morris-default-style"
-												style="left: 81.1725px; top: 139px;">
-												<div class="morris-hover-row-label">2011 Q2</div>
-												<div class="morris-hover-point" style="color: #495057">
-													Item 1: 2,778</div>
-												<div class="morris-hover-point" style="color: #007cff">
-													Item 2: 2,294</div>
-											</div>
-										</div>
-										<div class="chart tab-pane" id="sales-chart"
-											style="position: relative; height: 300px;">
-											<svg height="342" version="1.1" width="512"
-												xmlns="http://www.w3.org/2000/svg"
-												style="overflow: hidden; position: relative;">
-												<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc>
-												<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
-												<path fill="none" stroke="#007bff"
-													d="M256,243.33333333333331A93.33333333333333,93.33333333333333,0,0,0,344.2277551949771,180.44625304313007"
-													stroke-width="2" opacity="0"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path>
-												<path fill="#007bff" stroke="#ffffff"
-													d="M256,246.33333333333331A96.33333333333333,96.33333333333333,0,0,0,347.06364732624417,181.4248826052307L383.6151459070204,194.03833029452744A135,135,0,0,1,256,285Z"
-													stroke-width="3"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<path fill="none" stroke="#dc3545"
-													d="M344.2277551949771,180.44625304313007A93.33333333333333,93.33333333333333,0,0,0,172.28484627831412,108.73398312817662"
-													stroke-width="2" opacity="1"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;"></path>
-												<path fill="#dc3545" stroke="#ffffff"
-													d="M347.06364732624417,181.4248826052307A96.33333333333333,96.33333333333333,0,0,0,169.59400205154566,107.40757544301087L130.42726941747117,88.10097469226493A140,140,0,0,1,388.3416327924656,195.6693795646951Z"
-													stroke-width="3"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<path fill="none" stroke="#28a745"
-													d="M172.28484627831412,108.73398312817662A93.33333333333333,93.33333333333333,0,0,0,255.97067846904883,243.333328727518"
-													stroke-width="2" opacity="0"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path>
-												<path fill="#28a745" stroke="#ffffff"
-													d="M169.59400205154566,107.40757544301087A96.33333333333333,96.33333333333333,0,0,0,255.96973599126827,246.3333285794739L255.9575884998742,284.9999933380171A135,135,0,0,1,134.9120097954186,90.31165416754118Z"
-													stroke-width="3"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-												<text x="256" y="140" text-anchor="middle"
-													font="10px &quot;Arial&quot;" stroke="none" fill="#000000"
-													font-size="15px"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font: 800 15px Arial;"
-													font-weight="800" transform="matrix(1,0,0,1,0,0)">
-												<tspan dy="140"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">In-Store Sales</tspan></text>
-												<text x="256" y="160" text-anchor="middle"
-													font="10px &quot;Arial&quot;" stroke="none" fill="#000000"
-													font-size="14px"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font: 14px Arial;"
-													transform="matrix(1,0,0,1,0,0)">
-												<tspan dy="160"
-													style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">30</tspan></text></svg>
-										</div>
-									</div>
-								</div>
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
-						</div>
-						<!-- /.col-md-6 -->
-						<div class="col-lg-6">
-							<div class="card">
+							<div class="card" ng-controller="transRecordController"
+								ng-init="draw()">
 								<div class="card-header no-border">
 									<div class="d-flex justify-content-between">
-										<h3 class="card-title">充值记录</h3>
-										<a href="javascript:void(0);">View Report</a>
+										<h3 class="card-title">交易记录</h3>
 									</div>
 								</div>
 								<div class="card-body">
 									<div class="d-flex">
 										<p class="d-flex flex-column">
-											<span class="text-bold text-lg" id="total2">$18,230.00</span>
-											<span>Sales Over Time</span>
+											<span class="text-bold text-lg" id="total11">18,230.00</span>
+											<span>本周交易积分数</span>
 										</p>
 										<p class="ml-auto d-flex flex-column text-right">
-											<span class="text-success"> <i class="fa fa-arrow-up" id="arrow2"></i>
-												<aaa id="rate2">33.1%</aaa>
-											</span> <span class="text-muted">Since last month</span>
+											<span class="text-success"> <i class="fa fa-arrow-up"
+												id="arrow1"></i> <aaa id="rate1">33.1%</aaa>
+											</span> <span class="text-muted">比上周</span>
 										</p>
 									</div>
 									<!-- /.d-flex -->
@@ -565,17 +363,20 @@ to get the desired effect
 
 									<div class="d-flex flex-row justify-content-end">
 										<span class="mr-2"> <i
-											class="fa fa-square text-primary"></i> This year
-										</span> <span> <i class="fa fa-square text-gray"></i> Last
-											year
+											class="fa fa-square text-primary"></i> 本周
+										</span> <span> <i class="fa fa-square text-gray"></i> 上周
 										</span>
 									</div>
 								</div>
 							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col-md-6 -->
+						<div class="col-lg-6">
 
-							<div class="card" style="width: 611.6px;height: 397px">
+							<div class="card" style="width: 611.6px;height: 397px" ng-controller="loginRecordController" ng-init="showLoginRecord()">
 								<div class="card-header no-border">
-									<h3 class="card-title">敏感词记录</h3>
+									<h3 class="card-title">访客记录</h3>
 									<div class="card-tools">
 										<a href="#" class="btn btn-tool btn-sm"> <i
 											class="fa fa-download"></i>
@@ -588,65 +389,66 @@ to get the desired effect
 									<table class="table table-striped table-valign-middle">
 										<thead>
 											<tr>
-												<th>Product</th>
-												<th>Price</th>
-												<th>Sales</th>
-												<th>More</th>
+												<th>用户id</th>
+												<th>用户名称</th>
+												<th>访问时间</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td><img src="dist/img/default-150x150.png"
-													alt="Product 1" class="img-circle img-size-32 mr-2">
-													Some Product</td>
-												<td>$13 USD</td>
-												<td><small class="text-success mr-1"> <i
-														class="fa fa-arrow-up"></i> 12%
-												</small> 12,000 Sold</td>
-												<td><a href="#" class="text-muted"> <i
-														class="fa fa-search"></i>
-												</a></td>
-											</tr>
-											<tr>
-												<td><img src="dist/img/default-150x150.png"
-													alt="Product 1" class="img-circle img-size-32 mr-2">
-													Another Product</td>
-												<td>$29 USD</td>
-												<td><small class="text-warning mr-1"> <i
-														class="fa fa-arrow-down"></i> 0.5%
-												</small> 123,234 Sold</td>
-												<td><a href="#" class="text-muted"> <i
-														class="fa fa-search"></i>
-												</a></td>
-											</tr>
-											<tr>
-												<td><img src="dist/img/default-150x150.png"
-													alt="Product 1" class="img-circle img-size-32 mr-2">
-													Amazing Product</td>
-												<td>$1,230 USD</td>
-												<td><small class="text-danger mr-1"> <i
-														class="fa fa-arrow-down"></i> 3%
-												</small> 198 Sold</td>
-												<td><a href="#" class="text-muted"> <i
-														class="fa fa-search"></i>
-												</a></td>
-											</tr>
-											<tr>
-												<td><img src="dist/img/default-150x150.png"
-													alt="Product 1" class="img-circle img-size-32 mr-2">
-													Perfect Item <span class="badge bg-danger">NEW</span></td>
-												<td>$199 USD</td>
-												<td><small class="text-success mr-1"> <i
-														class="fa fa-arrow-up"></i> 63%
-												</small> 87 Sold</td>
-												<td><a href="#" class="text-muted"> <i
-														class="fa fa-search"></i>
-												</a></td>
+											<tr ng-repeat="record in records">
+												<td>
+													{{record.id}}</td>
+												<td>{{record.userId}}</td>
+												<td>{{record.loginTime|switchTime}}</td>
 											</tr>
 										</tbody>
 									</table>
+									<tm-pagination conf="paginationConf"></tm-pagination>
 								</div>
 							</div>
+							<!-- loginRecord结束 -->
+
+
+							<div class="card" ng-controller="chargeRecordController"
+								ng-init="draw()">
+								<div class="card-header no-border">
+									<div class="d-flex justify-content-between">
+										<h3 class="card-title">充值记录</h3>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="d-flex">
+										<p class="d-flex flex-column">
+											<span class="text-bold text-lg" id="total2">$18,230.00</span>
+											<span>本周充值金额</span>
+										</p>
+										<p class="ml-auto d-flex flex-column text-right">
+											<span class="text-success"> <i class="fa fa-arrow-up"
+												id="arrow2"></i> <aaa id="rate2">33.1%</aaa>
+											</span> <span class="text-muted">比上周</span>
+										</p>
+									</div>
+									<!-- /.d-flex -->
+
+									<div class="position-relative mb-4">
+										<canvas id="sales-chart2" height="200"></canvas>
+									</div>
+
+									<div class="d-flex flex-row justify-content-end">
+										<span class="mr-2"> <i
+											class="fa fa-square text-primary"></i> 本周
+										</span> <span> <i class="fa fa-square text-gray"></i> 上周
+										</span>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+
+
 							<!-- /.card -->
 						</div>
 						<!-- /.col-md-6 -->

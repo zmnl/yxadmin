@@ -15,7 +15,14 @@ app.filter('switchTime', function() {
 	}
 });
 
-
+function toDecimal(x) {
+	var f = parseFloat(x);
+	if (isNaN(f)) {
+		return;
+	}
+	f = Math.round(x * 100) / 100;
+	return f;
+}
 //控制层 
 app.controller('chargeRecordController', function($scope, $controller, chargeRecordService) {
 
@@ -32,31 +39,24 @@ app.controller('chargeRecordController', function($scope, $controller, chargeRec
 				var array = response;
 				//更新数据
 				var total2this = 0;
-				for(var temp = 0; temp < 7; temp++)
-				{
+				for (var temp = 0; temp < 7; temp++) {
 					total2this += array[temp];
 				}
-				$("#total2").html("$"+total2this);
+				$("#total2").html("$" + total2this);
 				var total2last = 0;
-				for(var temp = 7; temp < 14; temp++)
-				{
+				for (var temp = 7; temp < 14; temp++) {
 					total2last += array[temp];
 				}
-				var rate2 = (total2this-total2last)/total2last*100;
-				if(rate2 < 0)
-				{
+				var rate2 = (total2this - total2last) / total2last * 100;
+				if (rate2 < 0) {
 					rate2 = -rate2;
 					$("i#arrow2").attr("class", "fa fa-arrow-down");
-				}
-				else if(rate2 > 0)
-				{
+				} else if (rate2 > 0) {
 					$("i#arrow2").attr("class", "fa fa-arrow-up");
-				}
-				else
-				{
+				} else {
 					$("i#arrow2").attr("class", "");
 				}
-				$("aaa#rate2").html(rate2+"%");
+				$("aaa#rate2").html(toDecimal(rate2) + "%");
 				//画图
 				var ticksStyle = {
 					fontColor : '#495057',
@@ -66,13 +66,13 @@ app.controller('chargeRecordController', function($scope, $controller, chargeRec
 				var mode = 'index'
 				var intersect = true
 
-				var $salesChart = $('#sales-chart1');
+				var $salesChart = $('#sales-chart2');
 				var week = new Date().getDay();
 				var weeks = [ "日", "一", "二", "三", "四", "五", "六" ];
 				var salesChart = new Chart($salesChart, {
 					type : 'bar',
 					data : {
-						labels : [ weeks[(week-6+7)%7], weeks[(week-5+7)%7], weeks[(week-4+7)%7], weeks[(week-3+7)%7], weeks[(week-2+7)%7], weeks[(week-1+7)%7], weeks[week] ],
+						labels : [ weeks[(week - 6 + 7) % 7], weeks[(week - 5 + 7) % 7], weeks[(week - 4 + 7) % 7], weeks[(week - 3 + 7) % 7], weeks[(week - 2 + 7) % 7], weeks[(week - 1 + 7) % 7], weeks[week] ],
 						datasets : [
 							{
 								backgroundColor : '#007bff',
@@ -117,7 +117,7 @@ app.controller('chargeRecordController', function($scope, $controller, chargeRec
 											value /= 1000
 											value += 'k'
 										}
-										return '$' + value
+										return '' + value
 									}
 								}, ticksStyle)
 							} ],
