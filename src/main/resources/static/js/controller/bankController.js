@@ -156,11 +156,10 @@ app.controller('bankController' ,function($scope,$controller   ,bankService){
 		}				
 		serviceObject.success(
 			function(response){
+				alert(response.message);
 				if(response.success){
 					//重新查询 
 		        	$scope.reloadList();//重新加载
-				}else{
-					alert(response.message);
 				}
 			}		
 		);				

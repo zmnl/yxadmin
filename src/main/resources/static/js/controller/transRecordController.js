@@ -46,7 +46,7 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 				for (var temp = 0; temp < 7; temp++) {
 					total1this += array[temp];
 				}
-				$("#total11").html("$" + total1this);
+				$("#total11").html( total1this);
 				var total1last = 0;
 				for (var temp = 7; temp < 14; temp++) {
 					total1last += array[temp];

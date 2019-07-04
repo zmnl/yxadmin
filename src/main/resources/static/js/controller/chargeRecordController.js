@@ -42,7 +42,7 @@ app.controller('chargeRecordController', function($scope, $controller, chargeRec
 				for (var temp = 0; temp < 7; temp++) {
 					total2this += array[temp];
 				}
-				$("#total2").html("$" + total2this);
+				$("#total2").html(total2this);
 				var total2last = 0;
 				for (var temp = 7; temp < 14; temp++) {
 					total2last += array[temp];
