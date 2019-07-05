@@ -29,25 +29,6 @@ public class AdminController
 	@Autowired
 	private AdminService adminService;
 
-	/**
-	 * 获取实体
-	 * 
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping("/login")
-	public boolean login(Long id, String password)
-	{
-		TbAdmin admin = adminService.findOne(id);
-		if (admin != null && MD5Util.md5Encrypt32Upper(admin.getPassword()).equals(password))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 
 	
 	/**
