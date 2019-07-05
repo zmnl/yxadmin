@@ -33,4 +33,16 @@ app.service('transRecordService',function($http){
 	this.draw2=function(){
 		return $http.get("/transRecord/getRecord");
 	}
+	
+	
+	//查找所有用户
+		this.initList2=function(){
+			return $http.post('/user/findAll');
+		}    	
+		
+		
+		//查找所有用户
+		this.initList3=function(){
+			return $http.post('/user/findAll');
+		}    
 });

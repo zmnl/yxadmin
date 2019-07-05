@@ -308,7 +308,7 @@ app.controller('examController', function($scope, $controller, examService) {
 	
 	//查询教师
 	$scope.initList2=function(){			
-		bankService.initList2().success(
+		examService.initList2().success(
 				function(response){
 					$scope.list2=response;	
 				}			

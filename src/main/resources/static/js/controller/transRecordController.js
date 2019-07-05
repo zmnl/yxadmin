@@ -196,6 +196,35 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 		);				
 	}
 	
+	
+	
+	//查询用户
+	$scope.selectUser=function(tid){			
+		$scope.entity.buyerId = tid;
+	}
+	
+	$scope.selectUser1=function(tid1){			
+		$scope.entity.sellerId = tid1;
+	}
+	
+	//查询用户
+	$scope.initList2=function(){			
+		transRecordService.initList2().success(
+				function(response){
+					$scope.list2=response;	
+				}			
+		);
+	}
+	
+	
+	//查询用户
+	$scope.initList3=function(){			
+		transRecordService.initList3().success(
+				function(response){
+					$scope.list3=response;	
+				}			
+		);
+	}
 	//保存 
 	$scope.save=function(){		
 		var pluginStr = $("#time1").val();
