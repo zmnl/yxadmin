@@ -42,7 +42,7 @@ app.controller('chargeRecordController', function($scope, $controller, chargeRec
 				for (var temp = 0; temp < 7; temp++) {
 					total2this += array[temp];
 				}
-				$("#total2").html("$" + total2this);
+				$("#total2").html(total2this);
 				var total2last = 0;
 				for (var temp = 7; temp < 14; temp++) {
 					total2last += array[temp];
@@ -157,6 +157,23 @@ app.controller('chargeRecordController', function($scope, $controller, chargeRec
 		);
 	}
 
+	
+	
+	//查询用户
+	$scope.initList2=function(){			
+		chargeRecordService.initList2().success(
+				function(response){
+					$scope.list2=response;	
+				}			
+		);
+	}
+	
+	
+	
+	//查询教师
+		$scope.selectUser=function(tid){			
+			$scope.entity.userId = tid;
+		}
 	//查询实体 
 	$scope.findOne = function(id) {
 		chargeRecordService.findOne(id).success(
@@ -222,12 +239,12 @@ app.controller('chargeRecordController', function($scope, $controller, chargeRec
 		}
 		serviceObject.success(
 			function(response) {
+				alert(response.message);
 				if (response.success) {
 					//重新查询 
+				
 					$scope.reloadList(); //重新加载
-				} else {
-					alert(response.message);
-				}
+				} 
 			}
 		);
 	}

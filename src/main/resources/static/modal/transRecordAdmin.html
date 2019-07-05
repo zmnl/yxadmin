@@ -35,27 +35,51 @@
 <script src="plugins/chart.js/Chart.min.js"></script>
 <script src="dist/js/demo.js"></script>
 <script src="dist/js/pages/dashboard3.js"></script>
- 
-    <script type="text/javascript" src="../plugins/angularjs/angular.min.js">  </script>
-    <!-- 分页组件开始 -->
-	<script src="../plugins/angularjs/pagination.js"></script>
-	<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
-	<!-- 分页组件结束 -->
-    
-    
-    <script type="text/javascript" src="../js/base_pagination.js">  </script>
-    <script type="text/javascript" src="../js/service/transRecordService.js">  </script>
-    <script type="text/javascript" src="../js/controller/baseController.js">  </script>
-    <script type="text/javascript" src="../js/controller/transRecordController.js">  </script>
-    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
-    <script type="text/javascript"
+
+<script type="text/javascript" src="../plugins/angularjs/angular.min.js">  </script>
+<!-- 分页组件开始 -->
+<script src="../plugins/angularjs/pagination.js"></script>
+<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+<!-- 分页组件结束 -->
+
+
+<script type="text/javascript" src="../js/base_pagination.js">  </script>
+<script type="text/javascript" src="../js/service/transRecordService.js">  </script>
+<script type="text/javascript" src="../js/controller/baseController3.js">  </script>
+<script type="text/javascript"
+	src="../js/controller/transRecordController.js">  </script>
+<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+<script type="text/javascript"
 	src="js/moment-timezone-with-data-2012-2022.min.js"></script>
-	<script src="assets/theme/js/tempusdominus-bootstrap-4.js"></script>
-		<script type="text/javascript">
-		$(function() {
-			$('#datetimepicker1').datetimepicker();
+<script src="assets/theme/js/tempusdominus-bootstrap-4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#datetimepicker1').datetimepicker();
+	});
+</script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url : "/admin/getLogin",
+			success : function(res) {
+				if (res == "") {
+					alert("您未登录！");
+					window.location.href = "indexadmin.html";
+				} else {
+					$("#username").html(res.username);
+				}
+			}
 		});
-	</script>
+		$("#logout").click(function() {
+			$.ajax({
+				url : "/admin/logout",
+				success : function(res) {
+					window.location.href = "indexadmin.html";
+				}
+			});
+		})
+	});
+</script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -67,7 +91,8 @@ to get the desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini"  ng-app="yunxin"
+				ng-controller="transRecordController">
 	<div class="wrapper">
 		<!-- Navbar -->
 		<nav
@@ -81,7 +106,7 @@ to get the desired effect
 
 			</ul>
 
-	
+
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
 				<!-- Messages Dropdown Menu -->
@@ -192,10 +217,13 @@ to get the desired effect
 				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 					<div class="image">
 						<img src="dist/img/user2-160x160.jpg"
-							class="img-circle elevation-2" alt="User Image">
+							class="img-circle elevation-2" alt="User Image"
+							style="
+    width: 45px " ; style="height: 45px ">
 					</div>
 					<div class="info">
-						<a href="#" class="d-block">John</a>
+						<a href="#" class="d-block" id="username">John</a> <a href="#"
+							id="logout">登出</a>
 					</div>
 				</div>
 
@@ -221,11 +249,11 @@ to get the desired effect
 								</p>
 						</a>
 							<ul class="nav nav-treeview" style="display: block;">
-								<li class="nav-item"><a href="bankAdmin.html" class="nav-link">
-										<i class="fa fa-circle-o nav-icon"></i>
+								<li class="nav-item"><a href="bankAdmin.html"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>题库管理</p>
 								</a></li>
-							
+
 								<li class="nav-item"><a href="pages/charts/inline.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>分类管理</p>
@@ -242,17 +270,17 @@ to get the desired effect
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>考试管理</p>
 								</a></li>
-						
-								<li class="nav-link active"><a href="#"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+
+								<li class="nav-link active"><a href="#" class="nav-link">
+										<i class="fa fa-circle-o nav-icon"></i>
 										<p>交易记录管理</p>
 								</a></li>
 								<li class="nav-item"><a href="userAdmin.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>用户管理</p>
 								</a></li>
-								
-							
+
+
 							</ul></li>
 
 
@@ -266,115 +294,160 @@ to get the desired effect
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper"
 			style="min-height: 473.713px; padding-left: 30px;">
-			<div class="hold-transition skin-red sidebar-mini" ng-app="yunxin" ng-controller="transRecordController" >
-  <!-- .box-body -->
-                    <div class="box-header with-border">
-                        <h3 class="box-title">管理</h3>
-                    </div>
+			<div class="hold-transition skin-red sidebar-mini">
+				<!-- .box-body -->
+				<div class="box-header with-border">
+					<h3 class="box-title">管理</h3>
+				</div>
 
-                    <div class="box-body">
+				<div class="box-body">
 
-                        <!-- 数据表格 -->
-                        <div class="table-box">
+					<!-- 数据表格 -->
+					<div class="table-box">
 
-                            <!--工具栏-->
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="entity={}"><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" title="删除" ng-click="dele()"><i class="fa fa-trash-o"></i> 删除</button>           
-                                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">							       
-                                </div>
-                            </div>
-                            <!--工具栏/-->
+						<!--工具栏-->
+						<div class="pull-left">
+							<div class="form-group form-inline">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" title="新建"
+										data-toggle="modal" data-target="#editModal"
+										ng-click="entity={}">
+										<i class="fa fa-file-o"></i> 新建
+									</button>
+									<button type="button" class="btn btn-default" title="删除"
+										ng-click="dele()">
+										<i class="fa fa-trash-o"></i> 删除
+									</button>
+									<button type="button" class="btn btn-default" title="刷新"
+										onclick="window.location.reload();">
+										<i class="fa fa-refresh"></i> 刷新
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="box-tools pull-right">
+							<div class="has-feedback"></div>
+						</div>
+						<!--工具栏/-->
 
-			                  <!--数据列表-->
-			                  <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
-			                      <thead>
-			                          <tr>
-			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
-			                              </th> 
-										                               <th class="sorting">交易记录id</th>			
-                             <th class="sorting">购买者id</th>			
-                             <th class="sorting">售卖者id</th>			
-                             <th class="sorting">交易时间</th>			
-                             <th class="sorting">交易记录名称</th>			
-                             <th class="sorting">积分数</th>			
-                             <th class="sorting">试卷id</th>			
-                             <th class="sorting">状态</th>			
-								     				
-					                      <th class="text-center">操作</th>
-			                          </tr>
-			                      </thead>
-			                      <tbody>
-			                          <tr ng-repeat="entity in list">
-			                              <td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>			                              
-				                                                       <td>{{entity.id}}</td>			
-                             <td>{{entity.buyerId}}</td>			
-                             <td>{{entity.sellerId}}</td>			
-                             <td>{{entity.time|switchTime}}</td>			
-                             <td>{{entity.title}}</td>			
-                             <td>{{entity.pointNum}}</td>			
-                             <td>{{entity.paperId}}</td>			
-                             <td>{{entity.status}}</td>			
-		                                 
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs"style="background-color:#3d9970 !important;color:white" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)" >修改</button>                                           
-		                                  </td>
-			                          </tr>									 
-			                      </tbody>
-			                  </table>
-			                  <!--数据列表/-->                        
-                        </div>
-                        <!-- 数据表格 /-->
-                        <!-- 分页 -->
-						<tm-pagination conf="paginationConf"></tm-pagination>
-                     </div>
-                    <!-- /.box-body -->
-         
-<!-- 编辑窗口 -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
-	<div class="modal-content">
-		<div class="modal-header">
-		<h3 id="myModalLabel">编辑</h3>
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			
-		</div>
-		<div class="modal-body">	
-			  <table class="table table-bordered table-striped"  width="800px">			
-		      	  		      	<tr>
-                             
-<td>购买者id</td>
+						<!--数据列表-->
+						<table id="dataList"
+							class="table table-bordered table-striped table-hover dataTable">
+							<thead>
+								<tr>
+									<th class="" style="padding-right:0px"><input id="selall"
+										type="checkbox" class="icheckbox_square-blue"></th>
+									<th class="sorting">交易记录id</th>
+									<th class="sorting">购买者id</th>
+									<th class="sorting">售卖者id</th>
+									<th class="sorting">交易时间</th>
+									<th class="sorting">交易记录名称</th>
+									<th class="sorting">积分数</th>
+									<th class="sorting">试卷id</th>
+									<th class="sorting">状态</th>
 
-                             <td><input  class="form-control" ng-model="entity.buyerId" placeholder="购买者id" ></td>
+									<th class="text-center">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="entity in list">
+									<td><input type="checkbox"
+										ng-click="updateSelection($event,entity.id)"></td>
+									<td>{{entity.id}}</td>
+									<td>{{entity.buyerId}}</td>
+									<td>{{entity.sellerId}}</td>
+									<td>{{entity.time|switchTime}}</td>
+									<td>{{entity.title}}</td>
+									<td>{{entity.pointNum}}</td>
+									<td>{{entity.paperId}}</td>
+									<td>{{entity.status}}</td>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>售卖者id</td>
+									<td class="text-center">
+										<button type="button" class="btn bg-olive btn-xs"
+											style="background-color:#3d9970 !important;color:white"
+											data-toggle="modal" data-target="#editModal"
+											ng-click="findOne(entity.id)">修改</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!--数据列表/-->
+					</div>
+					<!-- 数据表格 /-->
+					<!-- 分页 -->
+					<tm-pagination conf="paginationConf"></tm-pagination>
+				</div>
+				<!-- /.box-body -->
 
-                             <td><input  class="form-control" ng-model="entity.sellerId" placeholder="售卖者id" ></td>
+				<!-- 编辑窗口 -->
+				<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 id="myModalLabel">编辑</h3>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>交易时间</td>
+							</div>
+							<div class="modal-body">
+								<table class="table table-bordered table-striped" width="800px">
+									<tr>
 
-                             <td>		<div class="form-group">
+										<td>购买者id</td>
+
+
+										<td><div class="dropdown" ng-init="initList2()">
+												<button type="button" class="btn dropdown-toggle"
+													id="dropdownMenu1" data-toggle="dropdown"
+													style="width:217.600px;height:34.400">
+													{{entity.buyerId}}</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation" ng-repeat="user2 in list2"
+														ng-click="selectUser(user2.id)"><a role="menuitem"
+														tabindex="-1" href="#">{{user2.id}}</a></li>
+
+
+												</ul>
+											</div></td>
+
+									</tr>
+									<tr>
+
+										<td>售卖者id</td>
+
+
+										<td><div class="dropdown" ng-init="initList3()">
+												<button type="button" class="btn dropdown-toggle"
+													id="dropdownMenu1" data-toggle="dropdown"
+													style="width:217.600px;height:34.400">
+													{{entity.sellerId}}</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation" ng-repeat="user3 in list3"
+														ng-click="selectUser1(user3.id)"><a role="menuitem"
+														tabindex="-1" href="#">{{user3.id}}</a></li>
+
+
+												</ul>
+											</div></td>
+
+									</tr>
+									<tr>
+
+										<td>交易时间</td>
+
+										<td>
+											<div class="form-group">
 												<div class="input-group date" id="datetimepicker1"
 													data-target-input="nearest">
 													<input type="text"
 														class="form-control datetimepicker-input"
 														data-target="#datetimepicker1"
-														value="{{entity.createTime | database2plugin}}" id="time1" style="
-    width: 323px"; />
+														value="{{entity.createTime | database2plugin}}" id="time1"
+														style="
+    width: 323px" ; />
 													<div class="input-group-append"
 														data-target="#datetimepicker1"
 														data-toggle="datetimepicker">
@@ -384,49 +457,56 @@ to get the desired effect
 														</div>
 													</div>
 												</div>
-											</div></td>
+											</div>
+										</td>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>交易记录名称</td>
+									</tr>
+									<tr>
 
-                             <td><input  class="form-control" ng-model="entity.title" placeholder="交易记录名称" ></td>
+										<td>交易记录名称</td>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>积分数</td>
+										<td><input class="form-control" ng-model="entity.title"
+											placeholder="交易记录名称"></td>
 
-                             <td><input  class="form-control" ng-model="entity.pointNum" placeholder="积分数" ></td>
+									</tr>
+									<tr>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>试卷id</td>
+										<td>积分数</td>
 
-                             <td><input  class="form-control" ng-model="entity.paperId" placeholder="试卷id" ></td>
+										<td><input class="form-control"
+											ng-model="entity.pointNum" placeholder="积分数"></td>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>状态</td>
+									</tr>
+									<tr>
 
-                             <td><input  class="form-control" ng-model="entity.status" placeholder="0：失败 ；1：成功" ></td>
+										<td>试卷id</td>
 
-                        </tr>		
-		  		      	
-			 </table>			
+										<td><input class="form-control" ng-model="entity.paperId"
+											placeholder="试卷id"></td>
+
+									</tr>
+									<tr>
+
+										<td>状态</td>
+
+										<td><input class="form-control" ng-model="entity.status"
+											placeholder="0：失败 ；1：成功"></td>
+
+									</tr>
+
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-success" data-dismiss="modal"
+									aria-hidden="true" ng-click="save()">保存</button>
+								<button class="btn btn-default" data-dismiss="modal"
+									aria-hidden="true">关闭</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
 		</div>
-		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
-			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-		</div>
-	  </div>
-	</div>
-</div>
-   
-</div>
-	</div>
 </body>
 </html>

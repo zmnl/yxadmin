@@ -58,6 +58,29 @@
 		$('#datetimepicker2').datetimepicker();
 	});
 </script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url : "/admin/getLogin",
+			success : function(res) {
+				if (res == "") {
+					alert("您未登录！");
+					window.location.href = "indexadmin.html";
+				} else {
+					$("#username").html(res.username);
+				}
+			}
+		});
+		$("#logout").click(function() {
+			$.ajax({
+				url : "/admin/logout",
+				success : function(res) {
+					window.location.href = "indexadmin.html";
+				}
+			});
+		})
+	});
+</script>
 <style type="text/css">
 .table {
 	table-layout: fixed;
@@ -205,7 +228,8 @@ to get the desired effect
 							class="img-circle elevation-2" alt="User Image">
 					</div>
 					<div class="info">
-						<a href="#" class="d-block">John</a>
+						<a href="#" class="d-block" id="username">John</a> <a href="#"
+							id="logout">登出</a>
 					</div>
 				</div>
 
@@ -390,8 +414,20 @@ to get the desired effect
 
 										<td>老师id</td>
 
-										<td><input class="form-control"
-											ng-model="entity.teacherId" placeholder="老师id"></td>
+										<td><div class="dropdown" ng-init="initList2()">
+												<button type="button" class="btn dropdown-toggle"
+													id="dropdownMenu1" data-toggle="dropdown"
+													style="width:217.600px;height:34.400">
+													{{entity.teacherId}}</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation" ng-repeat="teacher in list2"
+														ng-click="selectTeacher(teacher.id)"><a
+														role="menuitem" tabindex="-1" href="#">{{teacher.id}}</a></li>
+
+
+												</ul>
+											</div></td>
 
 									</tr>
 									<tr>
@@ -405,16 +441,18 @@ to get the desired effect
 													<input type="text"
 														class="form-control datetimepicker-input"
 														data-target="#datetimepicker1"
-														value="{{entity.createTime | database2plugin}}" id="time1" style="
+														value="{{entity.createTime | database2plugin}}" id="time1"
+														style="
     width: 192px; />
-													<div class="input-group-append"
+													<div class="
+														input-group-append"
 														data-target="#datetimepicker1"
 														data-toggle="datetimepicker">
-														<div class="input-group-text" style="height: 33.5px";>
-															<i class="fa fa-calendar"></i>
-														</div>
+													<div class="input-group-text" style="height: 33.5px";>
+														<i class="fa fa-calendar"></i>
 													</div>
 												</div>
+											</div>
 											</div>
 									</tr>
 									<tr>
@@ -427,16 +465,18 @@ to get the desired effect
 													<input type="text"
 														class="form-control datetimepicker-input"
 														data-target="#datetimepicker2"
-														value="{{entity.updateTime | database2plugin}}" id="time2" style="
+														value="{{entity.updateTime | database2plugin}}" id="time2"
+														style="
     width: 192px;/>
-													<div class="input-group-append"
+													<div class="
+														input-group-append"
 														data-target="#datetimepicker2"
 														data-toggle="datetimepicker">
-														<div class="input-group-text" style="height: 33.5px";>
-															<i class="fa fa-calendar"></i>
-														</div>
+													<div class="input-group-text" style="height: 33.5px";>
+														<i class="fa fa-calendar"></i>
 													</div>
 												</div>
+											</div>
 											</div>
 									</tr>
 

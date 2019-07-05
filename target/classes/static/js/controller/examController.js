@@ -43,6 +43,21 @@ app.controller('examController', function($scope, $controller, examService) {
 			}
 		);
 	}
+	
+	
+	//查询教师
+	$scope.selectTeacher=function(tid){			
+		$scope.entity.teacherId = tid;
+	}
+	
+	//查询教师
+	$scope.initList2=function(){			
+		examService.initList2().success(
+				function(response){
+					$scope.list2=response;	
+				}			
+		);
+	}
 
 	//分页
 	$scope.findPage = function(page, rows) {
@@ -262,12 +277,11 @@ app.controller('examController', function($scope, $controller, examService) {
 		}
 		serviceObject.success(
 			function(response) {
+				alert(response.message);
 				if (response.success) {
 					//重新查询 
 					$scope.reloadList(); //重新加载
-				} else {
-					alert(response.message);
-				}
+				} 
 			}
 		);
 	}
@@ -285,6 +299,24 @@ app.controller('examController', function($scope, $controller, examService) {
 			}
 		);
 	}
+	
+	
+	//查询教师
+	$scope.selectTeacher=function(tid){			
+		$scope.entity.teacherId = tid;
+	}
+	
+	//查询教师
+	$scope.initList2=function(){			
+		examService.initList2().success(
+				function(response){
+					$scope.list2=response;	
+				}			
+		);
+	}
+	
+	
+	
 
 	$scope.searchEntity = {}; //定义搜索对象 
 

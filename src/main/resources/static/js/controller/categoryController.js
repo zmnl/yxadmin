@@ -12,6 +12,12 @@ app.controller('categoryController' ,function($scope,$controller   ,categoryServ
 		);
 	}    
 	
+	
+	///查询教师
+	$scope.selectUser=function(tid){			
+		$scope.entity.fromID = tid;
+	}
+	
 	//分页
 	$scope.findPage=function(page,rows){			
 		categoryService.findPage(page,rows).success(
@@ -41,11 +47,11 @@ app.controller('categoryController' ,function($scope,$controller   ,categoryServ
 		}				
 		serviceObject.success(
 			function(response){
+				alert(response.message);
 				if(response.success){
 					//重新查询 
+					
 		        	$scope.reloadList();//重新加载
-				}else{
-					alert(response.message);
 				}
 			}		
 		);				
@@ -64,6 +70,16 @@ app.controller('categoryController' ,function($scope,$controller   ,categoryServ
 			}		
 		);				
 	}
+	
+	
+	//查询用户
+		$scope.initList2=function(){			
+			categoryService.initList2().success(
+					function(response){
+						$scope.list2=response;	
+					}			
+			);
+		}
 	
 	$scope.searchEntity={};//定义搜索对象 
 	

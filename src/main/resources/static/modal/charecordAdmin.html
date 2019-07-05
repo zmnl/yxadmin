@@ -44,7 +44,7 @@
 <script type="text/javascript" src="../js/base_pagination.js">  </script>
 <script type="text/javascript"
 	src="../js/service/chargeRecordService.js">  </script>
-<script type="text/javascript" src="../js/controller/baseController.js">  </script>
+<script type="text/javascript" src="../js/controller/baseController3.js">  </script>
 <script type="text/javascript"
 	src="../js/controller/chargeRecordController.js">  </script>
 <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
@@ -54,6 +54,29 @@
 <script type="text/javascript">
 	$(function() {
 		$('#datetimepicker1').datetimepicker();
+	});
+</script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url : "/admin/getLogin",
+			success : function(res) {
+				if (res == "") {
+					alert("您未登录！");
+					window.location.href = "indexadmin.html";
+				} else {
+					$("#username").html(res.username);
+				}
+			}
+		});
+		$("#logout").click(function() {
+			$.ajax({
+				url : "/admin/logout",
+				success : function(res) {
+					window.location.href = "indexadmin.html";
+				}
+			});
+		})
 	});
 </script>
 </head>
@@ -193,10 +216,12 @@ to get the desired effect
 				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 					<div class="image">
 						<img src="dist/img/user2-160x160.jpg"
-							class="img-circle elevation-2" alt="User Image">
+							class="img-circle elevation-2" alt="User Image" style="
+    width: 45px "; style="height: 45px ">
 					</div>
 					<div class="info">
-						<a href="#" class="d-block">John</a>
+						<a href="#" class="d-block" id="username">John</a> <a href="#"
+							id="logout">登出</a>
 					</div>
 				</div>
 
@@ -377,8 +402,20 @@ to get the desired effect
 
 										<td>用户id</td>
 
-										<td><input class="form-control" ng-model="entity.userId"
-											placeholder="用户id"></td>
+										<td><div class="dropdown" ng-init="initList2()">
+												<button type="button" class="btn dropdown-toggle"
+													id="dropdownMenu1" data-toggle="dropdown"
+													style="width: 326px;height:34.400;">
+													{{entity.userId}}</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation" ng-repeat="user in list2"
+														ng-click="selectUser(user.id)"><a
+														role="menuitem" tabindex="-1" href="#">{{user.id}}</a></li>
+
+
+												</ul>
+											</div></td>
 
 									</tr>
 									<tr>

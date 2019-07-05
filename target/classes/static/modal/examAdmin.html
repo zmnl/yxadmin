@@ -43,7 +43,7 @@
 
 <script type="text/javascript" src="../js/base_pagination.js">  </script>
 <script type="text/javascript" src="../js/service/examService.js">  </script>
-<script type="text/javascript" src="../js/controller/baseController.js">  </script>
+<script type="text/javascript" src="../js/controller/baseController3.js">  </script>
 <script type="text/javascript" src="../js/controller/examController.js">  </script>
 <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
 <script type="text/javascript"
@@ -201,7 +201,8 @@ to get the desired effect
 				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 					<div class="image">
 						<img src="dist/img/user2-160x160.jpg"
-							class="img-circle elevation-2" alt="User Image">
+							class="img-circle elevation-2" alt="User Image" style="
+    width: 45px "; style="height: 45px ">
 					</div>
 					<div class="info">
 						<a href="#" class="d-block">John</a>
@@ -413,8 +414,20 @@ to get the desired effect
 
 										<td>老师id</td>
 
-										<td><input class="form-control"
-											ng-model="entity.teacherId" placeholder="老师的id"></td>
+										<td><div class="dropdown" ng-init="initList2()">
+												<button type="button" class="btn dropdown-toggle"
+													id="dropdownMenu1" data-toggle="dropdown"
+													style="width:217.600px;height:34.400">
+													{{entity.teacherId}}</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation" ng-repeat="teacher in list2"
+														ng-click="selectTeacher(teacher.id)"><a
+														role="menuitem" tabindex="-1" href="#">{{teacher.id}}</a></li>
+
+
+												</ul>
+											</div></td>
 
 									</tr>
 									<tr>

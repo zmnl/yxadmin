@@ -46,7 +46,7 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 				for (var temp = 0; temp < 7; temp++) {
 					total1this += array[temp];
 				}
-				$("#total11").html("$" + total1this);
+				$("#total11").html( total1this);
 				var total1last = 0;
 				for (var temp = 7; temp < 14; temp++) {
 					total1last += array[temp];
@@ -193,9 +193,36 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 				//
 				$("#time1").val(datetime);				
 			}
-		);				
+		);	}			
+	
+	
+	//查询用户
+	$scope.selectUser=function(tid){			
+		$scope.entity.buyerId = tid;
 	}
 	
+	$scope.selectUser1=function(tid1){			
+		$scope.entity.sellerId = tid1;
+	}
+	
+	//查询用户
+	$scope.initList2=function(){			
+		transRecordService.initList2().success(
+				function(response){
+					$scope.list2=response;	
+				}			
+		);
+	}
+	
+	
+	//查询用户
+	$scope.initList3=function(){			
+		transRecordService.initList3().success(
+				function(response){
+					$scope.list3=response;	
+				}			
+		);
+	}
 	//保存 
 	$scope.save=function(){		
 		var pluginStr = $("#time1").val();
@@ -228,11 +255,10 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 		}				
 		serviceObject.success(
 			function(response){
+				alert(response.message);
 				if(response.success){
 					//重新查询 
 		        	$scope.reloadList();//重新加载
-				}else{
-					alert(response.message);
 				}
 			}		
 		);				
@@ -264,4 +290,4 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 		);
 	}
     
-});	
+});
