@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import group.yunxin.pojo.TbAdmin;
 import group.yunxin.service.AdminService;
+import group.yunxin.util.MD5Util;
 import group.yunxin.vo.PageResult;
 import group.yunxin.vo.Result;
 
@@ -27,6 +28,27 @@ public class AdminController
 	@Autowired
 	private AdminService adminService;
 
+	/**
+	 * 获取实体
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/login")
+	public boolean login(Long id, String password)
+	{
+		TbAdmin admin = adminService.findOne(id);
+		if (admin != null && MD5Util.md5Encrypt32Upper(admin.getPassword()).equals(password))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	
 	/**
 	 * 返回全部列表
 	 * 
@@ -98,9 +120,17 @@ public class AdminController
 	 * @return
 	 */
 	@RequestMapping("/findOne")
-	public TbAdmin findOne(Long id)
+	public boolean findOne(Long id, String password)
 	{
-		return adminService.findOne(id);
+		TbAdmin admin = adminService.findOne(id);
+		if (admin != null && MD5Util.md5Encrypt32Upper(admin.getPassword()).equals(password))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	/**

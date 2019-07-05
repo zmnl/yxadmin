@@ -3,13 +3,16 @@ package group.yunxin.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import group.yunxin.pojo.TbAdmin;
 import group.yunxin.pojo.TbUser;
+import group.yunxin.service.AdminService;
 import group.yunxin.service.UserService;
+import group.yunxin.util.MD5Util;
 import group.yunxin.vo.PageResult;
 import group.yunxin.vo.Result;
 
@@ -26,6 +29,7 @@ public class UserController
 
 	@Autowired
 	private UserService userService;
+	
 
 	/**
 	 * 返回全部列表
@@ -62,7 +66,8 @@ public class UserController
 		{
 			userService.add(user);
 			return new Result(true, "增加成功");
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
 			e.printStackTrace();
 			return new Result(false, "增加失败");
@@ -82,7 +87,8 @@ public class UserController
 		{
 			userService.update(user);
 			return new Result(true, "修改成功");
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
 			e.printStackTrace();
 			return new Result(false, "修改失败");
@@ -110,17 +116,21 @@ public class UserController
 	@RequestMapping("/delete")
 	public Result delete(Long[] ids)
 	{
+		
 		try
 		{
 			userService.delete(ids);
 			return new Result(true, "删除成功");
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
 			e.printStackTrace();
 			return new Result(false, "删除失败");
 		}
 	}
 
+	
+	
 	/**
 	 * 查询+分页
 	 * 
