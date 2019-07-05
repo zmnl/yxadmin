@@ -378,8 +378,20 @@ to get the desired effect
 
 										<td>用户id</td>
 
-										<td><input class="form-control" ng-model="entity.userId"
-											placeholder="用户id"></td>
+										<td><div class="dropdown" ng-init="initList2()">
+												<button type="button" class="btn dropdown-toggle"
+													id="dropdownMenu1" data-toggle="dropdown"
+													style="width: 326px;height:34.400;">
+													{{entity.userId}}</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation" ng-repeat="user in list2"
+														ng-click="selectUser(user.id)"><a
+														role="menuitem" tabindex="-1" href="#">{{user.id}}</a></li>
+
+
+												</ul>
+											</div></td>
 
 									</tr>
 									<tr>

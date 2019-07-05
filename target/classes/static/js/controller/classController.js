@@ -43,9 +43,8 @@ app.controller('classController' ,function($scope,$controller   ,classService){
 			function(response){
 				if(response.success){
 					//重新查询 
-		        	$scope.reloadList();//重新加载
-				}else{
 					alert(response.message);
+		        	$scope.reloadList();//重新加载
 				}
 			}		
 		);				
@@ -74,6 +73,23 @@ app.controller('classController' ,function($scope,$controller   ,classService){
 				$scope.list=response.rows;	
 				$scope.paginationConf.totalItems=response.total;//更新总记录数
 			}			
+		);
+	}
+	
+	
+	
+	
+	//查询教师
+	$scope.selectTeacher=function(tid){			
+		$scope.entity.teacherId = tid;
+	}
+	
+	//查询教师
+	$scope.initList2=function(){			
+		classService.initList2().success(
+				function(response){
+					$scope.list2=response;	
+				}			
 		);
 	}
     

@@ -32,5 +32,11 @@ app.service('chargeRecordService',function($http){
 	//搜索
 	this.draw2=function(){
 		return $http.get("/chargeRecord/getRecord");
-	}    	
+	}
+	
+	
+	//查找所有用户
+	this.initList2=function(){
+		return $http.post('/user/findAll');
+	}    
 });

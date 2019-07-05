@@ -414,8 +414,20 @@ to get the desired effect
 
 										<td>老师id</td>
 
-										<td><input class="form-control"
-											ng-model="entity.teacherId" placeholder="老师的id"></td>
+										<td><div class="dropdown" ng-init="initList2()">
+												<button type="button" class="btn dropdown-toggle"
+													id="dropdownMenu1" data-toggle="dropdown"
+													style="width:217.600px;height:34.400">
+													{{entity.teacherId}}</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation" ng-repeat="teacher in list2"
+														ng-click="selectTeacher(teacher.id)"><a
+														role="menuitem" tabindex="-1" href="#">{{teacher.id}}</a></li>
+
+
+												</ul>
+											</div></td>
 
 									</tr>
 									<tr>

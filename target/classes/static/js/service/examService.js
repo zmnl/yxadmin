@@ -28,5 +28,13 @@ app.service('examService',function($http){
 	//搜索
 	this.search=function(page,rows,searchEntity){
 		return $http.post('/exam/search?page='+page+"&rows="+rows, searchEntity);
-	}    	
+	}    
+	
+	//查找所有教师
+	this.initList2=function(){
+		return $http.post('/user/findAll');
+	}    
+	
+	
+ 	
 });

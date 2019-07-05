@@ -157,6 +157,23 @@ app.controller('chargeRecordController', function($scope, $controller, chargeRec
 		);
 	}
 
+	
+	
+	//查询用户
+	$scope.initList2=function(){			
+		chargeRecordService.initList2().success(
+				function(response){
+					$scope.list2=response;	
+				}			
+		);
+	}
+	
+	
+	
+	//查询教师
+		$scope.selectUser=function(tid){			
+			$scope.entity.userId = tid;
+		}
 	//查询实体 
 	$scope.findOne = function(id) {
 		chargeRecordService.findOne(id).success(
@@ -222,12 +239,12 @@ app.controller('chargeRecordController', function($scope, $controller, chargeRec
 		}
 		serviceObject.success(
 			function(response) {
+				alert(response.message);
 				if (response.success) {
 					//重新查询 
+				
 					$scope.reloadList(); //重新加载
-				} else {
-					alert(response.message);
-				}
+				} 
 			}
 		);
 	}

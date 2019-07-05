@@ -34,17 +34,17 @@
 
 
 
-   <script type="text/javascript" src="../plugins/angularjs/angular.min.js">  </script>
-    <!-- 分页组件开始 -->
-	<script src="../plugins/angularjs/pagination.js"></script>
-	<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
-	<!-- 分页组件结束 -->
-    
-    
-    <script type="text/javascript" src="../js/base_pagination.js">  </script>
-    <script type="text/javascript" src="../js/service/classService.js">  </script>
-    <script type="text/javascript" src="../js/controller/baseController3.js">  </script>
-    <script type="text/javascript" src="../js/controller/classController.js">  </script>
+<script type="text/javascript" src="../plugins/angularjs/angular.min.js">  </script>
+<!-- 分页组件开始 -->
+<script src="../plugins/angularjs/pagination.js"></script>
+<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+<!-- 分页组件结束 -->
+
+
+<script type="text/javascript" src="../js/base_pagination.js">  </script>
+<script type="text/javascript" src="../js/service/classService.js">  </script>
+<script type="text/javascript" src="../js/controller/baseController3.js">  </script>
+<script type="text/javascript" src="../js/controller/classController.js">  </script>
 
 </head>
 <!--
@@ -71,7 +71,7 @@ to get the desired effect
 
 			</ul>
 
-	
+
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
 				<!-- Messages Dropdown Menu -->
@@ -182,8 +182,9 @@ to get the desired effect
 				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 					<div class="image">
 						<img src="dist/img/user2-160x160.jpg"
-							class="img-circle elevation-2" alt="User Image" style="
-    width: 45px "; style="height: 45px ">
+							class="img-circle elevation-2" alt="User Image"
+							style="
+    width: 45px " ; style="height: 45px ">
 					</div>
 					<div class="info">
 						<a href="#" class="d-block">John</a>
@@ -212,11 +213,11 @@ to get the desired effect
 								</p>
 						</a>
 							<ul class="nav nav-treeview" style="display: block;">
-								<li class="nav-item"><a href="bankAdmin.html" class="nav-link">
-										<i class="fa fa-circle-o nav-icon"></i>
+								<li class="nav-item"><a href="bankAdmin.html"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>题库管理</p>
 								</a></li>
-							
+
 								<li class="nav-item"><a href="cateAdmin.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>分类管理</p>
@@ -225,17 +226,17 @@ to get the desired effect
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>充值记录管理</p>
 								</a></li>
-								<li class="nav-link active"><a href="#"
-									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+								<li class="nav-link active"><a href="#" class="nav-link">
+										<i class="fa fa-circle-o nav-icon"></i>
 										<p>班级管理</p>
 								</a></li>
 								<li class="nav-item"><a href="examAdmin.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>考试管理</p>
 								</a></li>
-							
-							
-								
+
+
+
 								<li class="nav-item"><a href="transRecordAdmin.html"
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>交易记录管理</p>
@@ -244,8 +245,8 @@ to get the desired effect
 									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
 										<p>用户管理</p>
 								</a></li>
-								
-								
+
+
 							</ul></li>
 
 
@@ -259,114 +260,145 @@ to get the desired effect
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper"
 			style="min-height: 473.713px; padding-left: 30px;">
-			<body class="hold-transition skin-red sidebar-mini" ng-app="yunxin" ng-controller="classController" >
-  <!-- .box-body -->
-                    <div class="box-header with-border">
-                        <h3 class="box-title">管理</h3>
-                    </div>
+			<body class="hold-transition skin-red sidebar-mini" ng-app="yunxin"
+				ng-controller="classController">
+				<!-- .box-body -->
+				<div class="box-header with-border">
+					<h3 class="box-title">管理</h3>
+				</div>
 
-                    <div class="box-body">
+				<div class="box-body">
 
-                        <!-- 数据表格 -->
-                        <div class="table-box">
+					<!-- 数据表格 -->
+					<div class="table-box">
 
-                            <!--工具栏-->
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="entity={}"><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" title="删除" ng-click="dele()"><i class="fa fa-trash-o"></i> 删除</button>           
-                                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">							       
-                                </div>
-                            </div>
-                            <!--工具栏/-->
+						<!--工具栏-->
+						<div class="pull-left">
+							<div class="form-group form-inline">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" title="新建"
+										data-toggle="modal" data-target="#editModal"
+										ng-click="entity={}">
+										<i class="fa fa-file-o"></i> 新建
+									</button>
+									<button type="button" class="btn btn-default" title="删除"
+										ng-click="dele()">
+										<i class="fa fa-trash-o"></i> 删除
+									</button>
+									<button type="button" class="btn btn-default" title="刷新"
+										onclick="window.location.reload();">
+										<i class="fa fa-refresh"></i> 刷新
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="box-tools pull-right">
+							<div class="has-feedback"></div>
+						</div>
+						<!--工具栏/-->
 
-			                  <!--数据列表-->
-			                   <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
-			                      <thead>
-			                          <tr>
-			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
-			                              </th> 
-										                               <th class="sorting">班级id</th>			
-                             <th class="sorting">班级名称</th>			
-                             <th class="sorting">班级描述</th>			
-                             <th class="sorting">老师id</th>			
-								     				
-					                      <th class="text-center">操作</th>
-			                          </tr>
-			                      </thead>
-			                      <tbody>
-			                          <tr ng-repeat="entity in list">
-			                              <td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>			                              
-				                                                       <td>{{entity.id}}</td>			
-                             <td>{{entity.name}}</td>			
-                             <td>{{entity.description}}</td>			
-                             <td>{{entity.teacherId}}</td>			
-		                                 
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" style="background-color:#3d9970 !important;color:white"data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)" >修改</button>                                           
-		                                  </td>
-			                          </tr>									 
-			                      </tbody>
-			                  </table>
-			                  <!--数据列表/-->                        
-                        </div>
-                        <!-- 数据表格 /-->
-                        <!-- 分页 -->
-						<tm-pagination conf="paginationConf"></tm-pagination>
-                     </div>
-                    <!-- /.box-body -->
-         
-<!-- 编辑窗口 -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
-	<div class="modal-content">
-		<div class="modal-header">
-			<h3 id="myModalLabel">编辑</h3>
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			
-		</div>
-		<div class="modal-body">	
-			<table class="table table-bordered table-striped"  width="800px">			
-		      	  		      	<tr>
-                             
-<td>班级名称</td>
+						<!--数据列表-->
+						<table id="dataList"
+							class="table table-bordered table-striped table-hover dataTable">
+							<thead>
+								<tr>
+									<th class="" style="padding-right:0px"><input id="selall"
+										type="checkbox" class="icheckbox_square-blue"></th>
+									<th class="sorting">班级id</th>
+									<th class="sorting">班级名称</th>
+									<th class="sorting">班级描述</th>
+									<th class="sorting">老师id</th>
 
-                             <td><input  class="form-control" ng-model="entity.name" placeholder="班级名称" ></td>
+									<th class="text-center">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="entity in list">
+									<td><input type="checkbox"
+										ng-click="updateSelection($event,entity.id)"></td>
+									<td>{{entity.id}}</td>
+									<td>{{entity.name}}</td>
+									<td>{{entity.description}}</td>
+									<td>{{entity.teacherId}}</td>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>班级描述</td>
+									<td class="text-center">
+										<button type="button" class="btn bg-olive btn-xs"
+											style="background-color:#3d9970 !important;color:white"
+											data-toggle="modal" data-target="#editModal"
+											ng-click="findOne(entity.id)">修改</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!--数据列表/-->
+					</div>
+					<!-- 数据表格 /-->
+					<!-- 分页 -->
+					<tm-pagination conf="paginationConf"></tm-pagination>
+				</div>
+				<!-- /.box-body -->
 
-                             <td><input  class="form-control" ng-model="entity.description" placeholder="班级描述" ></td>
+				<!-- 编辑窗口 -->
+				<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 id="myModalLabel">编辑</h3>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">×</button>
 
-                        </tr>		
-		      	<tr>
-                             
-<td>老师id</td>
+							</div>
+							<div class="modal-body">
+								<table class="table table-bordered table-striped" width="800px">
+									<tr>
 
-                             <td><input  class="form-control" ng-model="entity.teacherId" placeholder="老师id" ></td>
+										<td>班级名称</td>
 
-                        </tr>		
-		  		      	
-			 </table>					
-		</div>
-		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
-			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-		</div>
-	  </div>
-	</div>
-</div>
-   
-</body>
+										<td><input class="form-control" ng-model="entity.name"
+											placeholder="班级名称"></td>
+
+									</tr>
+									<tr>
+
+										<td>班级描述</td>
+
+										<td><input class="form-control"
+											ng-model="entity.description" placeholder="班级描述"></td>
+
+									</tr>
+									<tr>
+
+										<td>老师id</td>
+										<td><div class="dropdown" ng-init="initList2()">
+												<button type="button" class="btn dropdown-toggle"
+													id="dropdownMenu1" data-toggle="dropdown"
+													style="width:217.600px;height:34.400">
+													{{entity.teacherId}}</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="dropdownMenu1">
+													<li role="presentation" ng-repeat="teacher in list2"
+														ng-click="selectTeacher(teacher.id)"><a
+														role="menuitem" tabindex="-1" href="#">{{teacher.id}}</a></li>
+
+
+												</ul>
+											</div></td>
+									</tr>
+
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-success" data-dismiss="modal"
+									aria-hidden="true" ng-click="save()">保存</button>
+								<button class="btn btn-default" data-dismiss="modal"
+									aria-hidden="true">关闭</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</body>
 		</div>
 		<!-- /.content-wrapper -->
 
@@ -382,9 +414,9 @@ to get the desired effect
 			<div class="float-right d-none d-sm-block-down">Anything you
 				want</div>
 			<!-- Default to the left -->
-		<div class="login-extra text-center" style="text-align:center">
-		<a href="http://www.miit.gov.cn/">豫ICP备18041064号</a>
-	</div>
+			<div class="login-extra text-center" style="text-align:center">
+				<a href="http://www.miit.gov.cn/">豫ICP备18041064号</a>
+			</div>
 		</footer>
 	</div>
 	<!-- ./wrapper -->
@@ -397,10 +429,10 @@ to get the desired effect
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-				<h3 id="myModalLabel">编辑</h3>
+					<h3 id="myModalLabel">编辑</h3>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">×</button>
-					
+
 				</div>
 				<div class="modal-body">
 					<table class="table table-bordered table-striped" width="800px">

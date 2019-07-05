@@ -29,4 +29,8 @@ app.service('bankService',function($http){
 	this.search=function(page,rows,searchEntity){
 		return $http.post('/bank/search?page='+page+"&rows="+rows, searchEntity);
 	}    	
+	//查找所有教师
+	this.initList2=function(){
+		return $http.post('/user/findAll');
+	}    	
 });

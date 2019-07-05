@@ -29,6 +29,20 @@ app.controller('bankController' ,function($scope,$controller   ,bankService){
 		);
 	}    
 	
+	//查询教师
+	$scope.selectTeacher=function(tid){			
+		$scope.entity.teacherId = tid;
+	}
+	
+	//查询教师
+	$scope.initList2=function(){			
+		bankService.initList2().success(
+				function(response){
+					$scope.list2=response;	
+				}			
+		);
+	}
+	
 	//分页
 	$scope.findPage=function(page,rows){			
 		bankService.findPage(page,rows).success(
@@ -171,6 +185,7 @@ app.controller('bankController' ,function($scope,$controller   ,bankService){
 		//获取选中的复选框			
 		bankService.dele( $scope.selectIds ).success(
 			function(response){
+				//alert(response.message);
 				if(response.success){
 					$scope.reloadList();//刷新列表
 					$scope.selectIds=[];
