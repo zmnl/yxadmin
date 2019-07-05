@@ -198,6 +198,7 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 	
 	
 	
+	
 	//查询用户
 	$scope.selectUser=function(tid){			
 		$scope.entity.buyerId = tid;
