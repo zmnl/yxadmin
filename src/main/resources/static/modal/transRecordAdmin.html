@@ -57,6 +57,29 @@
 		$('#datetimepicker1').datetimepicker();
 	});
 </script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url : "/admin/getLogin",
+			success : function(res) {
+				if (res == "") {
+					alert("您未登录！");
+					window.location.href = "indexadmin.html";
+				} else {
+					$("#username").html(res.username);
+				}
+			}
+		});
+		$("#logout").click(function() {
+			$.ajax({
+				url : "/admin/logout",
+				success : function(res) {
+					window.location.href = "indexadmin.html";
+				}
+			});
+		})
+	});
+</script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -68,7 +91,8 @@ to get the desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini"  ng-app="yunxin"
+				ng-controller="transRecordController">
 	<div class="wrapper">
 		<!-- Navbar -->
 		<nav
@@ -198,7 +222,8 @@ to get the desired effect
     width: 45px " ; style="height: 45px ">
 					</div>
 					<div class="info">
-						<a href="#" class="d-block">John</a>
+						<a href="#" class="d-block" id="username">John</a> <a href="#"
+							id="logout">登出</a>
 					</div>
 				</div>
 
@@ -269,8 +294,7 @@ to get the desired effect
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper"
 			style="min-height: 473.713px; padding-left: 30px;">
-			<div class="hold-transition skin-red sidebar-mini" ng-app="yunxin"
-				ng-controller="transRecordController">
+			<div class="hold-transition skin-red sidebar-mini">
 				<!-- .box-body -->
 				<div class="box-header with-border">
 					<h3 class="box-title">管理</h3>

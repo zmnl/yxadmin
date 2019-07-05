@@ -9,7 +9,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
-<style>
+<style	>
 /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
@@ -205,22 +205,33 @@ input:focus {
 		rgba(255, 255, 255, 0.2);
 }
 </style>
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
+<script src="plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("button#www").click(function() {
+			$.ajax({
+				url : "/admin/login?id="+$("#id").val()+"&password="+$("#password").val(),
+				success : function(res) {
+					if(res == true)
+						window.location.href="index3.html";
+					else
+						alert("登录失败");
+				}
+			});
+		})
+	});
+</script>
 </head>
 
 <body>
 
 	<div class="login">
 		<h1>云心测评欢迎您</h1>
-		<form method="post">
+		<form >
 			<input type="text" name="u" placeholder="Username"
-				required="required" /> <input type="password" name="p"
-				placeholder="Password" required="required" />
-			<button type="submit" class="btn btn-primary btn-block btn-large">Let
-				me in.</button>
+				required="required" id="id" /> <input type="password" name="p"
+				placeholder="Password" required="required" id="password" />
+			<button id="www" type="button" class="btn btn-primary btn-block btn-large">登录</button>
 		</form>
 	</div>
 

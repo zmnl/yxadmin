@@ -193,10 +193,7 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 				//
 				$("#time1").val(datetime);				
 			}
-		);				
-	}
-	
-	
+		);	}			
 	
 	
 	//查询用户
@@ -293,4 +290,4 @@ app.controller('transRecordController' ,function($scope,$controller   ,transReco
 		);
 	}
     
-});	
+});
